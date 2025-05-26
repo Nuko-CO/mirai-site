@@ -11,15 +11,19 @@
 </head>
 <body>
 
-    <header class="top-nav">
+    <header class="top-nav sticky-header">
         <div class="logo">MIRAI TECH</div>
         <nav class="nav-links">
-          <a href="#technology">Technology</a>
-          <a href="#partners">Partners</a>
-          <a href="#services">Services</a>
-          <a href="#news">News</a>
-          <a href="#preorder">Pre-Order</a>
-          <a href="#contact">Contact Us</a>
+          <a href="#" onclick="toggleSubmenu(event)">Технологии</a>
+          <div class="tech-submenu" id="tech-submenu" style="display: none;">
+            <a href="#problem" class="submenu-link">Проблема</a>
+            <a href="#solution" class="submenu-link">Решение</a>
+          </div>
+          <a href="#partners">Партнеры</a>
+          <a href="#news">Новости</a>
+          <a href="#publications">Публикации</a>
+          <a href="#preorder">Предзаказ</a>
+          <a href="#contact">Контакты</a>
           <span class="lang">RU | KZ | EN</span>
         </nav>
       </header>
@@ -32,12 +36,53 @@
       <a href="#preorder" class="cta-button">Попробовать бесплатно</a>
     </div>
     <div class="hero-logo">
-      <img src="Frame 1000011338 (1).png" alt="Logo" />
+      <img src="mirai_logo2.png" alt="Logo" />
     </div>
   </section>
-
+  <section class="problems-section" id="problem">
+    <div class="problems-container">
+      <!-- Заголовок -->
+      <div class="problems-header">
+        <h2 class="problems-title">Что мешает пациентам жить без боли?</h2>
+        <p class="problems-subtitle">Эти симптомы мешают людям вести активный образ жизни — мы анализируем и решаем каждую из них.</p>
+      </div>
+  
+      <!-- Сетка карточек -->
+      <div class="problems-grid">
+        
+        <!-- Карточка 1 -->
+        <div class="problem-card">
+          <div class="problem-icon-wrapper">
+            <img src="model1.png" alt="Боль при ходьбе" class="problem-image" />
+          </div>
+          <h3 class="problem-title">Боль при ходьбе</h3>
+          <p class="problem-description">Пациенты испытывают хроническую боль из-за неправильной нагрузки на стопу и суставы.</p>
+        </div>
+  
+        <!-- Карточка 2 -->
+        <div class="problem-card">
+          <div class="problem-icon-wrapper">
+            <img src="model2.png" alt="Асимметрия походки" class="problem-image" />
+          </div>
+          <h3 class="problem-title">Асимметрия походки</h3>
+          <p class="problem-description">Нарушение баланса и движения приводит к травмам и усталости.</p>
+        </div>
+  
+        <!-- Карточка 3 -->
+        <div class="problem-card">
+          <div class="problem-icon-wrapper">
+            <img src="diagnoses.png" alt="Отсутствие диагностики" class="problem-image" />
+          </div>
+          <h3 class="problem-title">Отсутствие диагностики</h3>
+          <p class="problem-description">Многие не имеют доступа к современным методам анализа походки и давления.</p>
+        </div>
+  
+      </div>
+    </div>
+  </section>
 <!-- Technology Section -->
-<section class="technology-section" id="technology">
+
+<section class="technology-section" id="solution">
   <div class="tech-container">
     <div class="tech-header">
       <div class="tech-info">
@@ -105,44 +150,66 @@
       </div>
     </div>
   </div>
+  
 </section>
 
-  <section class="video-section">
-    <div class="video-frame">
-      <div class="mosaic-corner top-left"></div>
-      <div class="mosaic-corner top-right"></div>
-      <div class="mosaic-corner bottom-left"></div>
-      <div class="mosaic-corner bottom-right"></div>
-      <video controls width="100%" height="100%">
-        <source src="IMG_6936.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
+<section class="video-section">
+  <div class="video-carousel-container">
+    <button class="carousel-arrow left-arrow" onclick="scrollCarousel(-1)" aria-label="Previous video">&#10094;</button>
+    
+    <div class="video-carousel-wrapper">
+      <div class="video-carousel" id="videoCarousel">
+        <div class="video-card prev">
+          <video muted>
+            <source src="IMG_6936.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="video-card active">
+          <video controls>
+            <source src="video2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="video-card next">
+          <video muted>
+            <source src="IMG_6936.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
     </div>
-  </section>
+    
+    <button class="carousel-arrow right-arrow" onclick="scrollCarousel(1)" aria-label="Next video">&#10095;</button>
+  </div>
+</section>
 
  <!-- Отредактировано для улучшенного отображения в соответствии с Figma -->
  <!-- Service Section: Умные и Удобные Стельки -->
-<section class="service-section" id="services">
+ <section class="service-section" >
   <div class="service-container">
     <h2 class="section-title">Применение</h2>
-    <p class="section-subtitle">Умные стельки подходят для медицины, спорта и реабилитации</p>
+    <p class="section-subtitle">
+      Наши умные стельки используются в спорте, медицине, реабилитации и повседневной жизни.
+    </p>
+
     <div class="application-grid">
-      <div class="application-block">
+      <div class="application-block" style="--i: 1">
         <img src="walk.png" alt="Спорт" class="application-icon" />
         <h4>В спорте</h4>
         <p>Коррекция походки, снижение риска травм.</p>
       </div>
-      <div class="application-block">
+      <div class="application-block" style="--i: 2">
         <img src="doctor.png" alt="Медицина" class="application-icon" />
         <h4>В медицине</h4>
         <p>Диагностика, прогресс лечения, отчеты.</p>
       </div>
-      <div class="application-block">
+      <div class="application-block" style="--i: 3">
         <img src="sick.png" alt="Реабилитация" class="application-icon" />
         <h4>В реабилитации</h4>
         <p>Восстановление после травм и операций.</p>
       </div>
-      <div class="application-block">
+      <div class="application-block" style="--i: 4">
         <img src="old.png" alt="Пожилые" class="application-icon" />
         <h4>Для старшего поколения</h4>
         <p>Для уверенной и безопасной ходьбы.</p>
@@ -150,57 +217,6 @@
     </div>
   </div>
 </section>
-  <section class="news-section" id="news">
-    <div class="news-header">
-      <h2 class="news-title">СМИ о нас</h2>
-    </div>
-    <div class="news-scroll-wrapper">
-      <div class="news-grid">
-        <div class="news-card">
-          <img src="news1.jpg" alt="Digital Business" class="news-image">
-          <div class="news-meta">30.09.2022</div>
-          <h3 class="news-name">Digital Business</h3>
-          <p class="news-description">Что за стартап, который получил $20 тысяч от MOST Ventures</p>
-          <a href="#" class="news-link">Подробнее →</a>
-        </div>
-        <div class="news-card">
-          <img src="news2.jpg" alt="Steppe" class="news-image">
-          <div class="news-meta">07.12.2022</div>
-          <h3 class="news-name">Steppe</h3>
-          <p class="news-description">Female Founders: интервью с основательницей MedTech стартапа</p>
-          <a href="#" class="news-link">Подробнее →</a>
-        </div>
-        <div class="news-card">
-          <img src="news3.jpg" alt="Forbes Kazakhstan" class="news-image">
-          <div class="news-meta">20.12.2022</div>
-          <h3 class="news-name">Forbes Kazakhstan</h3>
-          <p class="news-description">Зубная фея: стоматологический стартап казахстанки оценили в $2 млн</p>
-          <a href="#" class="news-link">Подробнее →</a>
-        </div>
-        <div class="news-card">
-          <img src="news4.jpg" alt="Startup Voice" class="news-image">
-          <div class="news-meta">18.01.2023</div>
-          <h3 class="news-name">Startup Voice</h3>
-          <p class="news-description">AI-стельки MIRAI стали победителями стартап-состязания в Сингапуре.</p>
-          <a href="#" class="news-link">Подробнее →</a>
-        </div>
-        <div class="news-card">
-          <img src="news5.jpg" alt="TechCrunch" class="news-image">
-          <div class="news-meta">05.03.2023</div>
-          <h3 class="news-name">TechCrunch</h3>
-          <p class="news-description">Инновации из Казахстана: как MIRAI меняет медицину ходьбы.</p>
-          <a href="#" class="news-link">Подробнее →</a>
-        </div>
-        <div class="news-card">
-          <img src="news6.jpg" alt="MedTech Review" class="news-image">
-          <div class="news-meta">10.05.2023</div>
-          <h3 class="news-name">MedTech Review</h3>
-          <p class="news-description">Обзор лучших медицинских девайсов года: MIRAI Insole в топе.</p>
-          <a href="#" class="news-link">Подробнее →</a>
-        </div>
-      </div>
-    </div>
-  </section>
 <section class="testimonials-section">
   <div class="testimonial-scroll-wrapper">
     <div class="testimonial-grid">
@@ -263,20 +279,112 @@
 
   
   
-  <section class="partners-section" id="partners">
-    <h2 class="partners-title">Our Partners</h2>
+<section class="partners-section" id="partners">
+  <div class="partners-intro">
+    <h3 class="partners-subheading">Trusted by Leading Clinics and Institutions</h3>
+    <p class="partners-description">MIRAI TECH is already used by elite sports clinics and hospitals for diagnosing and improving patient mobility and performance.</p>
+  </div>
+  
+  <div class="partners-scroll-wrapper">
     <div class="partners-logos">
       <img src="partners/part1.PNG" alt="IDSPORT">
       <img src="partners/part7.PNG" alt="Городская многопрофильная больница №2">
       <img src="partners/part3.png" alt="In Motion Sport Clinic">
       <img src="partners/part4.PNG" alt="Green Clinic">
-      <img src="partners/part6.PNG" alt="ORTODok">
-      <img src="partners/part2.PNG" alt="Medical Center of the President Administration">
+      <img src="ortodok.png" alt="ORTODok">
+      <img src="univee.PNG" alt="Medical Center of the President Administration">
       <img src="partners/part5.PNG" alt="национальный центр травмотологиии">
     </div>
-  </section>
+  </div>
+</section>
 
     
+    <section class="news-section" id="news">
+      <div class="news-header">
+        <h2 class="news-title">СМИ о нас</h2>
+      </div>
+      <div class="news-scroll-wrapper">
+        <div class="news-grid">
+          <div class="news-card">
+            <img src="news1.jpg" alt="Digital Business" class="news-image">
+            <div class="news-meta">30.09.2022</div>
+            <h3 class="news-name">Digital Business</h3>
+            <p class="news-description">Что за стартап, который получил $20 тысяч от MOST Ventures</p>
+            <a href="#" class="news-link">Подробнее →</a>
+          </div>
+          <div class="news-card">
+            <img src="news2.jpg" alt="Steppe" class="news-image">
+            <div class="news-meta">07.12.2022</div>
+            <h3 class="news-name">Steppe</h3>
+            <p class="news-description">Female Founders: интервью с основательницей MedTech стартапа</p>
+            <a href="#" class="news-link">Подробнее →</a>
+          </div>
+          <div class="news-card">
+            <img src="news3.jpg" alt="Forbes Kazakhstan" class="news-image">
+            <div class="news-meta">20.12.2022</div>
+            <h3 class="news-name">Forbes Kazakhstan</h3>
+            <p class="news-description">Зубная фея: стоматологический стартап казахстанки оценили в $2 млн</p>
+            <a href="#" class="news-link">Подробнее →</a>
+          </div>
+          <div class="news-card">
+            <img src="news4.jpg" alt="Startup Voice" class="news-image">
+            <div class="news-meta">18.01.2023</div>
+            <h3 class="news-name">Startup Voice</h3>
+            <p class="news-description">AI-стельки MIRAI стали победителями стартап-состязания в Сингапуре.</p>
+            <a href="#" class="news-link">Подробнее →</a>
+          </div>
+          <div class="news-card">
+            <img src="news5.jpg" alt="TechCrunch" class="news-image">
+            <div class="news-meta">05.03.2023</div>
+            <h3 class="news-name">TechCrunch</h3>
+            <p class="news-description">Инновации из Казахстана: как MIRAI меняет медицину ходьбы.</p>
+            <a href="#" class="news-link">Подробнее →</a>
+          </div>
+          <div class="news-card">
+            <img src="news6.jpg" alt="MedTech Review" class="news-image">
+            <div class="news-meta">10.05.2023</div>
+            <h3 class="news-name">MedTech Review</h3>
+            <p class="news-description">Обзор лучших медицинских девайсов года: MIRAI Insole в топе.</p>
+            <a href="#" class="news-link">Подробнее →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="publications-section" id="publications">
+      <div class="publications-wrapper">
+        <h2 class="publications-title">Последние публикации</h2>
+        <div class="publications-list-scroll">
+          <div class="publications-list">
+            <div class="publication-card">
+              <p class="pub-year">2021</p>
+              <p class="pub-source">SENSORS</p>
+              <h3 class="pub-title">Validation of Plantar Pressure and Reaction Force Measured by Moticon Pressure Sensor Insoles on a Concept2Rowing Ergometer</h3>
+              <a href="#" class="pub-link">Read more →</a>
+            </div>
+            <div class="publication-card">
+              <p class="pub-year">2017</p>
+              <p class="pub-source">JOURNAL OF SPORTS ENGINEERING AND TECHNOLOGY</p>
+              <h3 class="pub-title">Sensor insole for measuring temporal variables and vertical force during sprinting</h3>
+              <a href="#" class="pub-link">Read more →</a>
+            </div>
+            <div class="publication-card">
+              <p class="pub-year">2015</p>
+              <p class="pub-source">JOURNAL OF FOOT AND ANKLE RESEARCH</p>
+              <h3 class="pub-title">Validation and reliability testing of a new, fully integrated gait analysis insole</h3>
+              <a href="#" class="pub-link">Read more →</a>
+            </div>
+            <div class="publication-card">
+              <p class="pub-year">2024</p>
+              <p class="pub-source">FRONTIERS IN BIOENGINEERING AND BIOTECHNOLOGY</p>
+              <h3 class="pub-title">Long-term continuous instrumented insole-based gait analyses in daily life have advantages over longitudinal gait analyses in the lab to monitor healing of tibial fractures</h3>
+              <a href="#" class="pub-link">Read more →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="preorder-section" id="preorder">
         <div class="single-mosaic-top-right">
             <div class="row">
@@ -334,8 +442,8 @@
         <h2><span style="color: white;">MIRAI</span><span style="color: #00C9C9;">tech</span></h2>
         <p class="footer-desc">Технология MiraiTech разработана для лёгкой интеграции в повседневную жизнь.</p>
         <div class="social-icons" style="margin-top: -8px;">
-          <a href="https://instagram.com/" target="_blank"><i class="mdi mdi-instagram"></i></a>
-          <a href="https://linkedin.com/" target="_blank"><i class="mdi mdi-linkedin"></i></a>
+          <a href="https://www.instagram.com/miraitech.ai?igsh=MWd3enVybnh1NXQ2ZQ%3D%3D&utm_source=qr" target="_blank"><i class="mdi mdi-instagram"></i></a>
+          <a href="https://www.linkedin.com/company/miraitechkz/" target="_blank"><i class="mdi mdi-linkedin"></i></a>
           <a href="https://t.me/miraitechkz" target="_blank"><i class="fa-brands fa-telegram"></i></a>
         </div>
       </div>
@@ -364,7 +472,60 @@
     <span class="close">&times;</span>
     <img class="modal-content" id="modalImage">
   </div>
+  <style>
+    .video-carousel-wrapper {
+      width: 70%;
+      overflow: hidden;
+      position: relative;
+      margin: 0 auto;
+    }
+
+    .video-carousel {
+      display: flex;
+      gap: 2rem;
+      transition: transform 0.5s ease;
+    }
+
+    .video-card {
+      flex: 0 0 100%;
+      transition: transform 0.5s ease, opacity 0.5s ease;
+      position: relative;
+      z-index: 1;
+      opacity: 0.4;
+      transform: scale(0.9);
+    }
+
+    .video-card.active {
+      opacity: 1;
+      transform: scale(1);
+      z-index: 2;
+    }
+  </style>
   <script>
+    function scrollCarousel(direction) {
+      const carousel = document.getElementById('videoCarousel');
+      const cards = carousel.querySelectorAll('.video-card');
+      currentIndex += direction;
+      if (currentIndex < 0) currentIndex = 0;
+      if (currentIndex >= cards.length) currentIndex = cards.length - 1;
+
+      // сместить карусель
+      const offset = -currentIndex * 100;
+      carousel.style.transform = `translateX(${offset}%)`;
+
+      // обновить активный класс
+      cards.forEach((card, i) => {
+        card.classList.toggle('active', i === currentIndex);
+      });
+    }
+
+    // Применить активный стиль при загрузке
+    document.addEventListener('DOMContentLoaded', () => {
+      scrollCarousel(0);
+    });
+  </script>
+  <script>
+    // Modal logic
     const modal = document.getElementById("imageModal");
     const modalImg = document.getElementById("modalImage");
     const images = document.querySelectorAll(".zoomable-image");
@@ -454,6 +615,12 @@
     });
   </script>
     
-  
 </body>
+<script>
+  function toggleSubmenu(event) {
+    event.preventDefault();
+    const submenu = document.getElementById("tech-submenu");
+    submenu.style.display = submenu.style.display === "block" ? "none" : "block";
+  }
+</script>
 </html>
