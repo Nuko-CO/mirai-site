@@ -8,7 +8,6 @@
   <link href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
  
-  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 </head>
 <body>
 
@@ -95,14 +94,7 @@
         </p>
         <a href="#video" class="cta-button tech-button">Смотреть демо</a>
       </div>
-      <model-viewer
-        src="insoles3D.glb"
-        alt="Smart Insole 3D модель"
-        auto-rotate
-        camera-controls
-        ar
-        style="width: 100%; height: 400px; background-color: #f5f5f5; border-radius: 12px;"
-      ></model-viewer>
+      <img class="tech-gif" src="insoles.PNG" alt="Smart Insole">
     </div>
 
     <div class="tech-features-grid">
@@ -157,38 +149,79 @@
         </div>
       </div>
     </div>
+
+    <section class="metrics-section dark-layout">
+      <h3 class="how-title">Метрики анализа походки</h3>
+      <p class="how-subtitle">Просматривайте ключевые данные о движении, давлении и симметрии шага.</p>
+      <div class="metrics-carousel-container">
+        <button class="carousel-arrow left-arrow" onclick="switchMetric(-1)" aria-label="Previous metric">&#10094;</button>
+
+        <div class="metrics-carousel">
+          <img src="metrics1.jpeg" alt="Metric Chart 1" class="metrics-image">
+          <img src="metrics2.jpeg" alt="Metric Chart 2" class="metrics-image">
+          <img src="metrics3.jpeg" alt="Metric Chart 3" class="metrics-image">
+        </div>
+
+        <button class="carousel-arrow right-arrow" onclick="switchMetric(1)" aria-label="Next metric">&#10095;</button>
+      </div>
+    </section>
+
+    <script>
+      let metricIndex = 0;
+
+function updateMetricsView() {
+  const images = document.querySelectorAll('.metrics-image');
+  const total = images.length;
+
+  images.forEach((img, i) => {
+    img.classList.remove('active', 'prev', 'next');
+  });
+
+  const prevIndex = (metricIndex - 1 + total) % total;
+  const nextIndex = (metricIndex + 1) % total;
+
+  images[prevIndex].classList.add('prev');
+  images[metricIndex].classList.add('active');
+  images[nextIndex].classList.add('next');
+}
+
+function switchMetric(direction) {
+  const images = document.querySelectorAll('.metrics-image');
+  metricIndex = (metricIndex + direction + images.length) % images.length;
+  updateMetricsView();
+}
+
+document.addEventListener('DOMContentLoaded', updateMetricsView);
+    </script>
   </div>
   
 </section>
 
 <section class="video-section">
+  <h3 class="how-title">AI Reels в действии</h3>
+  <p class="how-subtitle">Посмотрите, как работает технология на реальных видео с анализом походки.</p>
+
   <div class="video-carousel-container">
-    <button class="carousel-arrow left-arrow" onclick="scrollCarousel(-1)" aria-label="Previous video">&#10094;</button>
-    
-    <div class="video-carousel-wrapper">
-      <div class="video-carousel" id="videoCarousel">
-        <div class="video-card prev">
-          <video muted>
-            <source src="IMG_6936.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-        </div>
-        <div class="video-card active">
-          <video controls>
-            <source src="video2.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-        </div>
-        <div class="video-card next">
-          <video muted>
-            <source src="IMG_6936.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-        </div>
+    <button class="carousel-arrow left-arrow" onclick="switchVideo(-1)" aria-label="Previous video">&#10094;</button>
+
+    <div class="metrics-carousel" id="reelCarousel">
+      <div class="video-frame">
+        <div class="phone-model"><video muted loop><source src="reel1.mp4" type="video/mp4"></video></div>
+      </div>
+      <div class="video-frame">
+        <div class="phone-model"><video autoplay muted loop><source src="reel2.mp4" type="video/mp4"></video></div>
+      </div>
+      <div class="video-frame">
+        <div class="phone-model"><video muted loop><source src="reel3.mp4" type="video/mp4"></video></div>
+      </div>
+      <div class="video-frame">
+        <div class="phone-model"><video muted loop><source src="reel4.mp4" type="video/mp4"></video></div>
+      </div>
+      <div class="video-frame">
+        <div class="phone-model"><video muted loop><source src="reel5.mp4" type="video/mp4"></video></div>
       </div>
     </div>
-    
-    <button class="carousel-arrow right-arrow" onclick="scrollCarousel(1)" aria-label="Next video">&#10095;</button>
+    <button class="carousel-arrow right-arrow" onclick="switchVideo(1)" aria-label="Next video">&#10095;</button>
   </div>
 </section>
 
@@ -228,69 +261,73 @@
 <section class="testimonials-section">
   <div class="testimonial-scroll-wrapper">
     <div class="testimonial-grid">
-      <div class="testimonial-card">
-        <div class="testimonial-quote-block">
-          <p class="testimonial-subtitle">Отзывы</p>
-          <h2 class="testimonial-title">Что говорят<br>о нас пациенты</h2>
-          <p class="testimonial-text">“Четко увидел разницу нагрузки по ногам, понял, над чем надо работать после интерпретации результатов врачом.”</p>
-          <div class="testimonial-user">
-            <img class="testimonial-avatar" src="avatar.png" alt="Roman Ivanov">
-            <div>
-              <p class="user-name">Roman Ivanov</p>
-              <p class="user-desc">золотой медалист Азиатских игр по лыжному фристайлу</p>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-result-block">
-          <img src="RomanOlimp.jpg" alt="Result Chart" class="testimonial-result-image">
+    <div class="testimonial-card">
+      <div class="testimonial-header">
+        <img class="testimonial-avatar" src="avatar.png" alt="Constance Chu">
+        <div class="testimonial-info">
+          <p class="testimonial-name">CONSTANCE CHU</p>
+          <p class="testimonial-role">STANFORD UNIVERSITY, USA<br>PROFESSOR OF ORTHOPAEDIC SURGERY (SPORTS MEDICINE)<br>VICE CHAIR RESEARCH</p>
         </div>
       </div>
-
-      <div class="testimonial-card">
-        <div class="testimonial-quote-block">
-          <p class="testimonial-subtitle">Отзывы</p>
-          <h2 class="testimonial-title">Впечатления от использования</h2>
-          <p class="testimonial-text">“Очень помогло отследить симметрию шагов после травмы. Удобно, точно и понятно.”</p>
-          <div class="testimonial-user">
-            <img class="testimonial-avatar" src="avatar.png" alt="Aigerim Toleu">
-            <div>
-              <p class="user-name">Aigerim Toleu</p>
-              <p class="user-desc">профессиональный спортсмен</p>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-result-block">
-          <img src="RomanOlimp.jpg" alt="Result Chart" class="testimonial-result-image">
-        </div>
-      </div>
-
-      <div class="testimonial-card">
-        <div class="testimonial-quote-block">
-          <p class="testimonial-subtitle">Отзывы</p>
-          <h2 class="testimonial-title">Реабилитация и комфорт</h2>
-          <p class="testimonial-text">“После операции стельки стали ключевым инструментом в восстановлении походки.”</p>
-          <div class="testimonial-user">
-            <img class="testimonial-avatar" src="avatar.png" alt="Sergey K">
-            <div>
-              <p class="user-name">Sergey K.</p>
-              <p class="user-desc">пациент после травмы</p>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-result-block">
-          <img src="RomanOlimp.jpg" alt="Result Chart" class="testimonial-result-image">
-        </div>
-      </div>
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">
+        “Работать с MIRAI Smart Insoles позволило нам вывести проект из лаборатории и применять его в привычной среде. Благодаря беспроводной связи данные собираются быстро, а команда технической поддержки помогает с любыми особенностями настройки.”
+      </p>
     </div>
-  </div>
+
+    <div class="testimonial-card">
+      <div class="testimonial-header">
+        <img class="testimonial-avatar" src="avatar.png" alt="Bruce Ford">
+        <div class="testimonial-info">
+          <p class="testimonial-name">BRUCE FORD</p>
+          <p class="testimonial-role">CELESTRA HEALTH SYSTEMS<br>CEO</p>
+        </div>
+      </div>
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">
+        “Нас особенно впечатлило качество разработки и простота интеграции ПО MIRAI в наше мобильное приложение. Техническая поддержка была отличной на всём пути интеграции. Простая калибровка — лишь один из примеров внимательного подхода.”
+      </p>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-header">
+        <img class="testimonial-avatar" src="avatar.png" alt="Bruce Ford">
+        <div class="testimonial-info">
+          <p class="testimonial-name">BRUCE FORD</p>
+          <p class="testimonial-role">CELESTRA HEALTH SYSTEMS<br>CEO</p>
+        </div>
+      </div>
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">
+        “Нас особенно впечатлило качество разработки и простота интеграции ПО MIRAI в наше мобильное приложение. Техническая поддержка была отличной на всём пути интеграции. Простая калибровка — лишь один из примеров внимательного подхода.”
+      </p>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-header">
+        <img class="testimonial-avatar" src="avatar.png" alt="Bruce Ford">
+        <div class="testimonial-info">
+          <p class="testimonial-name">BRUCE FORD</p>
+          <p class="testimonial-role">CELESTRA HEALTH SYSTEMS<br>CEO</p>
+        </div>
+      </div>
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">
+        “Нас особенно впечатлило качество разработки и простота интеграции ПО MIRAI в наше мобильное приложение. Техническая поддержка была отличной на всём пути интеграции. Простая калибровка — лишь один из примеров внимательного подхода.”
+      </p>
+    </div>
+    </div> <!-- Закрытие testimonial-grid -->
+  </div> <!-- Закрытие testimonial-scroll-wrapper -->
 </section>
 
   
   
 <section class="partners-section" id="partners">
   <div class="partners-intro">
-    <h3 class="partners-subheading">Trusted by Leading Clinics and Institutions</h3>
-    <p class="partners-description">MIRAI TECH is already used by elite sports clinics and hospitals for diagnosing and improving patient mobility and performance.</p>
+    <h3 class="partners-subheading">Partners</h3>
+    
+    <!-- 
+<h3 class="partners-subheading">Trusted by Leading Clinics and Institutions</h3>
+<p class="partners-description">MIRAI TECH is already used by elite sports clinics and hospitals for diagnosing and improving patient mobility and performance.</p>
+-->
   </div>
   
   <div class="partners-scroll-wrapper">
@@ -309,7 +346,7 @@
     
     <section class="news-section" id="news">
       <div class="news-header">
-        <h2 class="news-title">СМИ о нас</h2>
+        <h2 class="news-title">Новости</h2>
       </div>
       <div class="news-scroll-wrapper">
         <div class="news-grid">
@@ -329,31 +366,66 @@
           </div>
           <div class="news-card">
             <img src="news3.jpg" alt="Forbes Kazakhstan" class="news-image">
-            <div class="news-meta">20.12.2022</div>
+            <div class="news-meta">20.12.2025</div>
             <h3 class="news-name">SEDS NU</h3>
             <p class="news-description">The MIRAI project by SEDS professors and students was recognized for developing smart medical insoles that combine AI and sensor technologies.</p>
             <a href="https://seds.nu.edu.kz/news/tpost/i16i0udoc1-seds-professors-and-students-project-mir" class="news-link">Learn more→</a>
           </div>
           <div class="news-card">
             <img src="news4.jpg" alt="Startup Voice" class="news-image">
-            <div class="news-meta">18.01.2023</div>
+            <div class="news-meta">18.01.2025</div>
             <h3 class="news-name">Startup Voice</h3>
-            <p class="news-description">AI-стельки MIRAI стали победителями стартап-состязания в Сингапуре.</p>
-            <a href="#" class="news-link">Подробнее →</a>
+            <p class="news-description">MIRAI Tech начала пилотное тестирование в ведущих реабилитационных центрах Казахстана при поддержке Министерства здравоохранения. Вице-министр Ербол Оспанов посетил демонстрацию технологии и выразил свою поддержку развитию инноваций в медицине.</p>
+            <a href="https://www.instagram.com/reel/DFwRqiqo2fA/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" class="news-link">Подробнее →</a>
           </div>
           <div class="news-card">
-            <img src="news5.jpg" alt="TechCrunch" class="news-image">
-            <div class="news-meta">05.03.2023</div>
-            <h3 class="news-name">TechCrunch</h3>
-            <p class="news-description">Инновации из Казахстана: как MIRAI меняет медицину ходьбы.</p>
-            <a href="#" class="news-link">Подробнее →</a>
+            <img src="news5.png" alt="TechCrunch" class="news-image">
+            <div class="news-meta">05.03.2025</div>
+            <h3 class="news-name">Hospital</h3>
+            <p class="news-description">Команда MIRAI TECH посетила отделение педиатрической реабилитации под руководством Орынкуль Каладиновой, где обсудили, как умные стельки могут помочь детям восстанавливать подвижность и уверенность после травм. Благодарим за тёплый приём и вдохновляющий обмен опытом!</p>
+            <a href="https://www.instagram.com/p/DI3MgimASUN/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" class="news-link">Подробнее →</a>
           </div>
           <div class="news-card">
-            <img src="news6.jpg" alt="MedTech Review" class="news-image">
-            <div class="news-meta">10.05.2023</div>
+            <img src="news6.png" alt="MedTech Review" class="news-image">
+            <div class="news-meta">10.05.2025</div>
             <h3 class="news-name">MedTech Review</h3>
             <p class="news-description">Обзор лучших медицинских девайсов года: MIRAI Insole в топе.</p>
-            <a href="#" class="news-link">Подробнее →</a>
+            <a href="https://www.instagram.com/p/DHWOFuWgcJz/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" class="news-link">Подробнее →</a>
+          </div>
+          <div class="news-card">
+            <img src="news7.png" alt="TechCrunch" class="news-image">
+            <div class="news-meta">05.03.2025</div>
+            <h3 class="news-name">Hospital</h3>
+            <p class="news-description">Начало пилота в УДП больнице: шаг к внедрению казахстанских инноваций в медицине</p>
+            <a href="https://www.instagram.com/p/DJThi_eza_O/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA%3D%3D" class="news-link">Подробнее →</a>
+          </div>
+          <div class="news-card">
+            <img src="news8.png" alt="TechCrunch" class="news-image">
+            <div class="news-meta">05.03.2025</div>
+            <h3 class="news-name">Hospital</h3>
+            <p class="news-description">Начало пилота в УДП больнице: шаг к внедрению казахстанских инноваций в медицине</p>
+            <a href="https://www.instagram.com/p/DJThi_eza_O/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA%3D%3D" class="news-link">Подробнее →</a>
+          </div>
+          <div class="news-card">
+            <img src="news9.png" alt="TechCrunch" class="news-image">
+            <div class="news-meta">05.03.2025</div>
+            <h3 class="news-name">Hospital</h3>
+            <p class="news-description">MIRAI TECH LAUNCHES PILOT AT CITY HOSPITAL NO. 2: INNOVATION IN POST-STROKE REHABILITATION</p>
+            <a href="https://www.instagram.com/p/DJeZkqWtJ5e/?utm_source=ig_web_copy_link" class="news-link">Подробнее →</a>
+          </div>
+          <div class="news-card">
+            <img src="news10.png" alt="TechCrunch" class="news-image">
+            <div class="news-meta">05.03.2025</div>
+            <h3 class="news-name">Hospital</h3>
+            <p class="news-description">Павел Самсонов, специалист по реабилитации, посетил лабораторию MIRAItech и лично протестировал новый прототип сенсорных стелек. Мы обсудили новейшие разработки и получили ценные отзывы от эксперта с многолетним опытом физиотерапии.</p>
+            <a href="https://www.instagram.com/reel/DIl0rlxA8nO/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA%3D%3D" class="news-link">Подробнее →</a>
+          </div>
+          <div class="news-card">
+            <img src="news11.png" alt="TechCrunch" class="news-image">
+            <div class="news-meta">05.03.2025</div>
+            <h3 class="news-name">Hospital</h3>
+            <p class="news-description">Начало пилота в УДП больнице: шаг к внедрению казахстанских инноваций в медицине</p>
+            <a href="https://www.instagram.com/p/DIJRY9ssu92/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" class="news-link">Подробнее →</a>
           </div>
         </div>
       </div>
@@ -361,7 +433,7 @@
 
     <section class="publications-section" id="publications">
       <div class="publications-wrapper">
-        <h2 class="publications-title">Последние публикации</h2>
+        <h2 class="publications-title">Наши публикации</h2>
         <div class="publications-list-scroll">
           <div class="publications-list">
             <div class="publication-card">
@@ -448,7 +520,7 @@
         </form>
         <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
           <div class="preorder-image">
-            <img src="logo1.png" alt="MIRAI TECH logo">
+            <img src="#" alt="MIRAI TECH logo">
           </div>
         </div>
       </section>
@@ -492,57 +564,26 @@
     <span class="close">&times;</span>
     <img class="modal-content" id="modalImage">
   </div>
-  <style>
-    .video-carousel-wrapper {
-      width: 70%;
-      overflow: hidden;
-      position: relative;
-      margin: 0 auto;
-    }
-
-    .video-carousel {
-      display: flex;
-      gap: 2rem;
-      transition: transform 0.5s ease;
-    }
-
-    .video-card {
-      flex: 0 0 100%;
-      transition: transform 0.5s ease, opacity 0.5s ease;
-      position: relative;
-      z-index: 1;
-      opacity: 0.4;
-      transform: scale(0.9);
-    }
-
-    .video-card.active {
-      opacity: 1;
-      transform: scale(1);
-      z-index: 2;
-    }
-  </style>
   <script>
-    function scrollCarousel(direction) {
-      const carousel = document.getElementById('videoCarousel');
-      const cards = carousel.querySelectorAll('.video-card');
-      currentIndex += direction;
-      if (currentIndex < 0) currentIndex = 0;
-      if (currentIndex >= cards.length) currentIndex = cards.length - 1;
-
-      // сместить карусель
-      const offset = -currentIndex * 100;
-      carousel.style.transform = `translateX(${offset}%)`;
-
-      // обновить активный класс
-      cards.forEach((card, i) => {
-        card.classList.toggle('active', i === currentIndex);
-      });
+    let videoIndex = 0;
+    function updateVideoCarousel() {
+      const items = document.querySelectorAll('#reelCarousel .video-frame');
+      const total = items.length;
+      items.forEach(item => item.className = 'video-frame');
+      const prev = (videoIndex - 1 + total) % total;
+      const next = (videoIndex + 1) % total;
+      items[prev].classList.add('prev');
+      items[videoIndex].classList.add('active');
+      items[next].classList.add('next');
     }
 
-    // Применить активный стиль при загрузке
-    document.addEventListener('DOMContentLoaded', () => {
-      scrollCarousel(0);
-    });
+    function switchVideo(dir) {
+      const items = document.querySelectorAll('#reelCarousel .video-frame');
+      videoIndex = (videoIndex + dir + items.length) % items.length;
+      updateVideoCarousel();
+    }
+
+    document.addEventListener('DOMContentLoaded', updateVideoCarousel);
   </script>
   <script>
     // Modal logic
