@@ -12,7 +12,9 @@
 <body>
 
     <header class="top-nav sticky-header">
-        <div class="logo">MIRAI TECH</div>
+      <div class="logo">
+        <img src="MiraiLogo.png" alt="MIRAI TECH logo">
+      </div>
         <nav class="nav-links">
           <a href="#" onclick="toggleSubmenu(event)">Технологии</a>
           <div class="tech-submenu" id="tech-submenu" style="display: none;">
@@ -36,7 +38,7 @@
       <a href="#preorder" class="cta-button">Попробовать бесплатно</a>
     </div>
     <div class="hero-logo">
-      <img src="mirai_logo2.png" alt="Logo" />
+      <img src="mirai_logo_transparent.png" alt="Logo" />
     </div>
   </section>
 <section class="problems-section" id="problem">
@@ -455,12 +457,38 @@ document.addEventListener('DOMContentLoaded', updateMetricsView);
         </div>
       </div>
     </section>
+    <!-- In-house Technology Section -->
+<section class="made-section dark-layout" id="made-tech">
+  <div class="made-container">
+    <div class="made-text">
+      <h2 class="made-title">
+        In-house technology.<br />
+        Made in Kazakhstan.
+      </h2>
+
+      <p class="made-description">
+        Мы разрабатываем и производим стельки MIRAI Smart Insole на собственном
+        производстве в Астане. Это позволяет нам контролировать качество на всех
+        этапах и внедрять инновации быстрее — от сенсоров до алгоритмов ИИ.
+        Мы создали сеть поставщиков мирового уровня, чтобы привнести лучшее
+        в каждую пару стелек.
+      </p>
+    </div>
+
+    <div class="made-logos">
+      <!-- Замените src на свои файлы/иконки -->
+      <img src="madeinkz.png" alt="Made in Kazakhstan" class="made-logo" />
+      
+    </div>
+  </div>
+</section>
     <section class="events-section">
       <h2 class="events-title">Семинары и события</h2>
       <div class="events-scroll-wrapper">
         <div class="events-track">
           <div class="event-card">
             <img src="events1.png" alt="Семинар 1" class="event-image" />
+            <a href="https://www.instagram.com/p/C6vA5FvM4Qx/" class="news-link" style="display: block; text-align: center; margin-top: 10px; color: #00F0FF;">Подробнее →</a>
           </div>
           <div class="event-card">
             <img src="events2.png" alt="Семинар 2" class="event-image" />
