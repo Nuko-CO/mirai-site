@@ -26,7 +26,7 @@
           <a href="#publications">Публикации</a>
           <a href="#preorder">Предзаказ</a>
           <a href="#contact">Контакты</a>
-          <span class="lang">RU | KZ | EN</span>
+          <span class="lang">KZ | EN | RU</span>
         </nav>
       </header>
 
@@ -193,7 +193,7 @@ document.addEventListener('DOMContentLoaded', updateMetricsView);
         <div class="phone-model"><video muted loop><source src="reels1.mp4" type="video/mp4"></video></div>
       </div>
       <div class="video-frame">
-        <div class="phone-model"><video autoplay muted loop><source src="reels2.MP4" type="video/mp4"></video></div>
+        <div class="phone-model"><video muted loop><source src="reels2.MP4" type="video/mp4"></video></div>
       </div>
       <div class="video-frame">
         <div class="phone-model"><video muted loop><source src="reels3.MP4" type="video/mp4"></video></div>
@@ -607,9 +607,14 @@ document.addEventListener('DOMContentLoaded', updateMetricsView);
       items[videoIndex].classList.add('active');
       items[next].classList.add('next');
 
+      // Play the active video only after the user clicks it
       const activeVideo = items[videoIndex].querySelector('video');
-      activeVideo.muted = false;
-      activeVideo.play();
+      function handlePlay() {
+        activeVideo.muted = false;   // unmute on first play
+        activeVideo.play();
+        activeVideo.removeEventListener('click', handlePlay);
+      }
+      activeVideo.addEventListener('click', handlePlay);
     }
 
     function switchVideo(dir) {
