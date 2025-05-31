@@ -16,29 +16,34 @@
         <img src="MiraiLogo.png" alt="MIRAI TECH logo">
       </div>
         <nav class="nav-links">
-          <a href="#" onclick="toggleSubmenu(event)">Технологии</a>
+          <a href="#" onclick="toggleSubmenu(event)">О нас</a>
           <div class="tech-submenu" id="tech-submenu" style="display: none;">
             <a href="#problem" class="submenu-link">Проблема</a>
             <a href="#solution" class="submenu-link">Решение</a>
           </div>
-          <a href="#partners">Партнеры</a>
-          <a href="#news">Новости</a>
+          <a href="#technology">Технологии</a>
           <a href="#publications">Публикации</a>
-          <a href="#preorder">Предзаказ</a>
+          <a href="#news">Блог</a>
           <a href="#contact">Контакты</a>
           <span class="lang">KZ | EN | RU</span>
+          <a href="https://www.instagram.com/miraitech.ai" class="social-link" target="_blank" aria-label="Instagram">
+            <i class="mdi mdi-instagram"></i>
+          </a>
+          <a href="https://www.linkedin.com/company/miraitechkz/" class="social-link" target="_blank" aria-label="LinkedIn">
+            <i class="mdi mdi-linkedin"></i>
+          </a>
         </nav>
       </header>
 
   <section class="hero">
     <div class="hero-text">
-      <span class="mini-title">MIRAItech</span>
+      <span class="mini-title">MIRAI TECH</span>
       <h1><strong>Ходьба</strong> — путь<br><em>к здоровью</em></h1>
       <p>Mirai Smart Insole анализирует давление и походку в реальном времени, помогая выявить отклонения и восстановить баланс движений.</p>
       <a href="#preorder" class="cta-button">Попробовать бесплатно</a>
     </div>
     <div class="hero-logo">
-      <img src="mirai_logo_transparent.png" alt="Logo" />
+      <img src="mirai4.png" alt="Logo" />
     </div>
   </section>
 <section class="problems-section" id="problem">
@@ -87,6 +92,7 @@
         <h3>Синхронизация с телефоном</h3>
         <p>Все данные доступны в приложении: визуализация, история и рекомендации.</p>
       </div>
+      
       <div class="feature">
         <div class="icon mdi mdi-run-fast"></div>
         <h3>Анализ походки в движении</h3>
@@ -96,6 +102,16 @@
         <div class="icon mdi mdi-cloud-upload-outline"></div>
         <h3>Автоматический отчёт</h3>
         <p>PDF-отчёт генерируется после каждого сеанса. Подходит для врачей и спортсменов.</p>
+      </div>
+      <div class="feature">
+        <div class="icon mdi mdi-brain"></div>
+        <h3>ИИ-обработка данных</h3>
+        <p>Автоматический анализ походки и асимметрии на базе алгоритмов машинного обучения.</p>
+      </div>
+      <div class="feature">
+        <div class="icon mdi mdi-brain"></div>
+        <h3>ИИ-обработка данных</h3>
+        <p>Автоматический анализ походки и асимметрии на базе алгоритмов машинного обучения.</p>
       </div>
     </div>
     <div class="how-it-works dark-layout">
@@ -126,10 +142,11 @@
           <h4>Получите отчёт</h4>
           <p>На мобильном устройстве откроется отчёт с графиками и рекомендациями.</p>
         </div>
+        
       </div>
     </div>
 
-    <section class="metrics-section dark-layout">
+<section class="metrics-section">
       <h3 class="how-title">Метрики анализа походки</h3>
       <p class="how-subtitle">Просматривайте ключевые данные о движении, давлении и симметрии шага.</p>
       <div class="metrics-carousel-container">
@@ -190,19 +207,34 @@ document.addEventListener('DOMContentLoaded', updateMetricsView);
 
     <div class="metrics-carousel" id="reelCarousel">
       <div class="video-frame">
-        <div class="phone-model"><video muted loop><source src="reels1.mp4" type="video/mp4"></video></div>
+        <div class="phone-model">
+          <img src="iphoneFrame.png" alt="" class="phone-frame">
+          <video muted loop><source src="reels1.mp4" type="video/mp4"></video>
+        </div>
       </div>
       <div class="video-frame">
-        <div class="phone-model"><video muted loop><source src="reels2.MP4" type="video/mp4"></video></div>
+        <div class="phone-model">
+          <img src="iphoneFrame.png" alt="" class="phone-frame">
+          <video muted loop><source src="reels2.MP4" type="video/mp4"></video>
+        </div>
       </div>
       <div class="video-frame">
-        <div class="phone-model"><video muted loop><source src="reels3.MP4" type="video/mp4"></video></div>
+        <div class="phone-model">
+          <img src="iphoneFrame.png" alt="" class="phone-frame">
+          <video muted loop><source src="reels3.MP4" type="video/mp4"></video>
+        </div>
       </div>
       <div class="video-frame">
-        <div class="phone-model"><video muted loop><source src="reels4.mp4" type="video/mp4"></video></div>
+        <div class="phone-model">
+          <img src="iphoneFrame.png" alt="" class="phone-frame">
+          <video muted loop><source src="reels4.mp4" type="video/mp4"></video>
+        </div>
       </div>
       <div class="video-frame">
-        <div class="phone-model"><video muted loop><source src="reels5.mp4" type="video/mp4"></video></div>
+        <div class="phone-model">
+          <img src="iphoneFrame.png" alt="" class="phone-frame">
+          <video muted loop><source src="reels5.mp4" type="video/mp4"></video>
+        </div>
       </div>
     </div>
     <button class="carousel-arrow right-arrow" onclick="switchVideo(1)" aria-label="Next video">&#10095;</button>
@@ -485,12 +517,12 @@ document.addEventListener('DOMContentLoaded', updateMetricsView);
         <div class="events-track">
           <div class="event-card">
             <img src="events1.png" alt="Семинар 1" class="event-image" />
-            <a href="https://www.instagram.com/p/C6vA5FvM4Qx/" class="news-link" style="display: block; text-align: center; margin-top: 10px; color: #00F0FF;">Подробнее →</a>
+            <a href="https://www.instagram.com/p/C6vA5FvM4Qx/" class="event-link">Подробнее →</a>
           </div>
          
           <div class="event-card">
             <img src="events2.1.png" alt="Семинар 4" class="event-image" />
-            <a href="https://www.instagram.com/p/C6vA5FvM4Qx/" class="news-link" style="display: block; text-align: center; margin-top: 10px; color: #00F0FF;">Подробнее →</a>
+            <a href="https://www.instagram.com/p/C6vA5FvM4Qx/" class="event-link">Подробнее →</a>
           </div>
           
         </div>
@@ -524,6 +556,9 @@ document.addEventListener('DOMContentLoaded', updateMetricsView);
       <h2 class="preorder-title">Get Smart Insoles Now</h2>
     </div>
     <div class="preorder-container">
+      <div class="preorder-image">
+        <img src="phoneorder.png" alt="Instagram Profile on Phone">
+      </div>
       <form action="https://formspree.io/f/xanozvpn" method="POST" target="hidden_iframe" onsubmit="submitted=true" class="preorder-form" id="preorder-form">
         <input type="text" name="name" placeholder="Name" required>
         <input type="text" name="organization" placeholder="Organisation Name">
@@ -553,9 +588,9 @@ document.addEventListener('DOMContentLoaded', updateMetricsView);
   <div class="footer-wrapper">
     <div class="footer-container">
       <div class="footer-left">
-        <h2><span style="color: white;">MIRAI</span><span style="color: #00C9C9;">tech</span></h2>
+        <img src="MiraiLogo.png" alt="MIRAI TECH logo" class="footer-logo" />
         <p class="footer-desc">Технология MiraiTech разработана для лёгкой интеграции в повседневную жизнь.</p>
-        <div class="social-icons" style="margin-top: -8px;">
+        <div class="social-icons">
           <a href="https://www.instagram.com/miraitech.ai?igsh=MWd3enVybnh1NXQ2ZQ%3D%3D&utm_source=qr" target="_blank"><i class="mdi mdi-instagram"></i></a>
           <a href="https://www.linkedin.com/company/miraitechkz/" target="_blank"><i class="mdi mdi-linkedin"></i></a>
           <a href="https://t.me/miraitechkz" target="_blank"><i class="fa-brands fa-telegram"></i></a>
@@ -564,7 +599,8 @@ document.addEventListener('DOMContentLoaded', updateMetricsView);
       <div class="footer-right">
         <div class="contact-info" style="text-align: right; margin-left: auto;">
           <h3>Contacts</h3>
-          <p>+7 775 144 58 41 • mirai.tech.kz@gmail.com</p>
+          <p>+7 775 144 58 41</p>
+          <p>mirai.tech.kz@gmail.com</p>
           <p>пр. Кабанбай батыра 53, Астана</p>
         </div>
       </div>
@@ -718,10 +754,18 @@ document.addEventListener('DOMContentLoaded', updateMetricsView);
     
 </body>
 <script>
+  // Показ / скрытие подпункта «О нас»
   function toggleSubmenu(event) {
     event.preventDefault();
-    const submenu = document.getElementById("tech-submenu");
-    submenu.style.display = submenu.style.display === "block" ? "none" : "block";
+    const submenu = document.getElementById('tech-submenu');
+    // Переключаем между flex и none, чтобы соблюдать flex‑колонку из CSS
+    submenu.style.display = submenu.style.display === 'flex' ? 'none' : 'flex';
   }
+
+  // Автоматически закрываем подпункт при прокрутке страницы
+  window.addEventListener('scroll', () => {
+    const submenu = document.getElementById('tech-submenu');
+    if (submenu.style.display === 'flex') submenu.style.display = 'none';
+  });
 </script>
 </html>
