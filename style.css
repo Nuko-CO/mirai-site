@@ -1848,6 +1848,7 @@ gap: 200px;
   border-radius: 6px;
   top: 2.6rem;
   left: 0;
+  top: 100%;
   transform: none;
   z-index: 1000;
   box-shadow: 0 8px 24px rgba(0,0,0,0.3);
@@ -1858,6 +1859,9 @@ gap: 200px;
 
 /* Ensure nav-links is relatively positioned for submenu */
 .nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
   position: relative;
 }
 
@@ -2349,6 +2353,9 @@ gap: 200px;
 
 
 .video-frame {
+  border: none;
+  background: transparent;
+  overflow: hidden;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -2802,8 +2809,8 @@ gap: 200px;
 /* ---------- Insta Reels / Phone mock-up ---------- */
 .phone-model {
   position: relative;
-  width: 270px;           /* внешний размер макета iPhone */
-  height: 550px;
+  width: 340px;     /* closer to video width */
+  height: 760px;    /* slightly shorter to align */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2812,29 +2819,35 @@ gap: 200px;
 
 /* PNG / SVG рамка, добавленная в HTML */
 .phone-frame {
-  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 50%;
   width: 100%;
-  height: auto;
+  height: 100%;
   pointer-events: none;
   user-select: none;
   display: block;
+  z-index: 2;           /* outline sits above the video */
+  transform-origin: center;
+  transform: translate(-50%, -50%) scale(1);
 }
 
 /* Видео «лежит» под прозрачным экраном */
 .phone-model video {
   position: absolute;
-  top: 7.5%;              /* подгони при необходимости */
-  left: 7%;
-  width: 86%;
-  height: 83%;
+  z-index: 1;          /* stays under the frame */
+  top: 14%;
+  left: 10%;
+  width: 80%;
+  height: 72%;
   object-fit: cover;
-  border-radius: 22px;
+  border-radius: 32px;
   pointer-events: auto;
 }
 
 /* --- стрелки прокрутки — чуть дальше от телефона --- */
-.video-carousel-container .carousel-arrow.left-arrow  { left: calc(50% - 225px); }
-.video-carousel-container .carousel-arrow.right-arrow { right: calc(50% - 225px); }
+.video-carousel-container .carousel-arrow.left-arrow  { left: calc(50% - 285px); }
+.video-carousel-container .carousel-arrow.right-arrow { right: calc(50% - 285px); }
 
 /* --- увеличиваем «воздух» между соседними телефонами --- */
 .video-frame.prev  { transform: translate(-200%, -50%) scale(0.75); }
@@ -2857,4 +2870,11 @@ gap: 200px;
 .events-section .event-link:hover {
   color: #35c9ab;          /* light green on hover */
   text-decoration: underline;
+}
+/* Flaticon icon credit */
+.icon-credit {
+  text-align: center;
+  font-size: 0.8rem;
+  margin-top: 0.75rem;
+  color: #6b7280;
 }
