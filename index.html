@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+</head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MIRAI TECH</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
- 
+  <style>
+    section[id]::before {
+      content: "";
+      display: block;
+      height: 80px; /* adjust this value based on header height */
+      margin-top: -80px; /* match the height */
+      visibility: hidden;
+    }
+  </style>
+</head>
 </head>
 <body>
 
@@ -16,22 +26,40 @@
         <img src="MiraiLogo.png" alt="MIRAI TECH logo">
       </div>
         <nav class="nav-links">
-          <a href="#" onclick="toggleSubmenu(event)">О нас</a>
-          <div class="tech-submenu" id="tech-submenu" style="display: none;">
-            <a href="#problem" class="submenu-link">Проблема</a>
-            <a href="#solution" class="submenu-link">Решение</a>
+          <div class="submenu-container">
+            <a href="#" onclick="toggleSubmenu(event, 'submenu-about')">О нас</a>
+            <div class="tech-submenu" id="submenu-about" style="display: none;">
+              <a href="#problem" class="submenu-link">Проблема</a>
+              <a href="#solution" class="submenu-link">Решение</a>
+            </div>
           </div>
-          <a href="#technology">Технологии</a>
+          <div class="submenu-container">
+            <a href="#" onclick="toggleSubmenu(event, 'submenu-tech')">Технологии</a>
+            <div class="tech-submenu" id="submenu-tech" style="display: none;">
+              <a href="#how" class="submenu-link">Как работает MIRAI</a>
+              <a href="#metrics" class="submenu-link">Метрики</a>
+              <a href="#service" class="submenu-link">Применение</a>
+            </div>
+          </div>
           <a href="#publications">Публикации</a>
-          <a href="#news">Блог</a>
+          <div class="submenu-container">
+            <a href="#" onclick="toggleSubmenu(event, 'submenu-blog')">Блог</a>
+            <div class="tech-submenu" id="submenu-blog" style="display: none;">
+              <a href="#news" class="submenu-link">Новости</a>
+              <a href="#testimonials" class="submenu-link">Отзывы</a>
+              <a href="#events" class="submenu-link">События</a>
+            </div>
+          </div>
           <a href="#contact">Контакты</a>
-          <span class="lang">KZ | EN | RU</span>
-          <a href="https://www.instagram.com/miraitech.ai" class="social-link" target="_blank" aria-label="Instagram">
-            <i class="mdi mdi-instagram"></i>
-          </a>
-          <a href="https://www.linkedin.com/company/miraitechkz/" class="social-link" target="_blank" aria-label="LinkedIn">
-            <i class="mdi mdi-linkedin"></i>
-          </a>
+          <div class="nav-right">
+            <span class="lang">KZ | EN | RU</span>
+            <a href="https://www.instagram.com/miraitech.ai" class="social-link" target="_blank" aria-label="Instagram">
+              <i class="mdi mdi-instagram"></i>
+            </a>
+            <a href="https://www.linkedin.com/company/miraitechkz/" class="social-link" target="_blank" aria-label="LinkedIn">
+              <i class="mdi mdi-linkedin"></i>
+            </a>
+          </div>
         </nav>
       </header>
 
@@ -115,7 +143,7 @@
         <p>Не требует обучения или специального оборудования. Всё запускается через приложение — на компьютере или телефоне.</p>
       </div>
     </div>
-    <div class="how-it-works dark-layout">
+    <div class="how-it-works dark-layout" id="how">
       <h3 class="how-title">Как работает MIRAI Smart Insole?</h3>
       <p class="how-subtitle">Всего 4 шага — и вы получаете цифровой портрет походки</p>
       <div class="how-steps condensed-layout">
@@ -147,24 +175,40 @@
       </div>
     </div>
 
-<section class="metrics-section">
-      <h3 class="how-title">Метрики анализа походки</h3>
-      <p class="how-subtitle">Просматривайте ключевые данные о движении, давлении и симметрии шага.</p>
-      <div class="metrics-carousel-container">
-        <button class="carousel-arrow left-arrow" onclick="switchMetric(-1)" aria-label="Previous metric">&#10094;</button>
-
-        <div class="metrics-carousel">
-          <img src="metricss1.png" alt="Metric Chart 1" class="metrics-image">
-          <img src="metricss2.png" alt="Metric Chart 1" class="metrics-image">
-          <img src="metricss3.png" alt="Metric Chart 2" class="metrics-image">
-          <img src="metricss4.png" alt="Metric Chart 2" class="metrics-image">
-          <img src="metricss5.png" alt="Metric Chart 3" class="metrics-image">
-          <img src="metricss6.png" alt="Metric Chart 3" class="metrics-image">
-        </div>
-
-        <button class="carousel-arrow right-arrow" onclick="switchMetric(1)" aria-label="Next metric">&#10095;</button>
+<section class="metrics-section" id="metrics">
+  <div class="metrics-text-container">
+    <h3 class="metrics-title">Метрики анализа походки</h3>
+    <p class="metrics-subtitle">Просматривайте ключевые данные о движении, давлении и симметрии шага.</p>
+  </div>
+  <div class="metrics-image-box">
+    <div class="metrics-grid">
+      <div class="metric-item">
+        <img src="metrics_icon1.png" alt="Асимметрия">
+        <p>Асимметрия</p>
       </div>
-    </section>
+      <div class="metric-item">
+        <img src="metrics_icon2.png" alt="Длина шага">
+        <p>Длина шага</p>
+      </div>
+      <div class="metric-item">
+        <img src="metrics_icon3.png" alt="Распределение нагрузки">
+        <p>Распределение нагрузки</p>
+      </div>
+      <div class="metric-item">
+        <img src="metrics_icon4.png" alt="Динамика">
+        <p>Динамика</p>
+      </div>
+      <div class="metric-item">
+        <img src="metrics_icon5.png" alt="Фазы контакта">
+        <p>Фазы контакта</p>
+      </div>
+      <div class="metric-item">
+        <img src="metrics_icon6.png" alt="Фазы переката">
+        <p>Фазы переката</p>
+      </div>
+    </div>
+  </div>
+</section>
 
     <script>
       let metricIndex = 0;
@@ -248,7 +292,7 @@ document.addEventListener('DOMContentLoaded', updateMetricsView);
 
  <!-- Отредактировано для улучшенного отображения в соответствии с Figma -->
  <!-- Service Section: Умные и Удобные Стельки -->
- <section class="service-section" >
+ <section class="service-section"id="service" >
   <div class="service-container">
     <h2 class="section-title">Применение</h2>
     <p class="section-subtitle">
@@ -275,7 +319,7 @@ document.addEventListener('DOMContentLoaded', updateMetricsView);
     </div>
   </div>
 </section>
-<section class="testimonials-section">
+<section class="testimonials-section" id="testimonials">
   <div class="testimonial-scroll-wrapper">
     <div class="testimonial-grid">
     <div class="testimonial-card">
@@ -392,14 +436,14 @@ document.addEventListener('DOMContentLoaded', updateMetricsView);
             <img src="news4.jpg" alt="Startup Voice" class="news-image">
             <div class="news-meta">18.01.2025</div>
             <h3 class="news-name">Startup Voice</h3>
-            <p class="news-description">MIRAI Tech начала пилотное тестирование в ведущих реабилитационных центрах Казахстана при поддержке Министерства здравоохранения. Вице-министр Ербол Оспанов посетил демонстрацию технологии и выразил свою поддержку развитию инноваций в медицине.</p>
+            <p class="news-description">MIRAI Tech начала пилотное тестирование в ведущих реабилитационных центрах Казахстана при поддержке Министерства здравоохранения.</p>
             <a href="https://www.instagram.com/reel/DFwRqiqo2fA/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" class="news-link">Подробнее →</a>
           </div>
           <div class="news-card">
             <img src="news5.png" alt="TechCrunch" class="news-image">
             <div class="news-meta">05.03.2025</div>
             <h3 class="news-name">Hospital</h3>
-            <p class="news-description">Команда MIRAI TECH посетила отделение педиатрической реабилитации под руководством Орынкуль Каладиновой, где обсудили, как умные стельки могут помочь детям восстанавливать подвижность и уверенность после травм. Благодарим за тёплый приём и вдохновляющий обмен опытом!</p>
+            <p class="news-description">Команда MIRAI TECH посетила отделение педиатрической реабилитации под руководством Орынкуль Каладиновой</p>
             <a href="https://www.instagram.com/p/DI3MgimASUN/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" class="news-link">Подробнее →</a>
           </div>
           <div class="news-card">
@@ -451,7 +495,7 @@ document.addEventListener('DOMContentLoaded', updateMetricsView);
     <section class="publications-section" id="publications">
       <div class="publications-wrapper">
         <h2 class="publications-title">Наши публикации</h2>
-        <div class="publications-list-scroll">
+        <div class="publications-list-scroll horizontal-scroll">
           <div class="publications-list">
             <div class="publication-card">
               <p class="pub-year">2025</p>
@@ -518,53 +562,29 @@ document.addEventListener('DOMContentLoaded', updateMetricsView);
     </div>
   </div>
 </section>
-    <section class="events-section">
-      <h2 class="events-title">Семинары и события</h2>
-      <div class="events-scroll-wrapper">
-        <div class="events-track">
-          <div class="event-card">
-            <img src="events1.png" alt="Семинар 1" class="event-image" />
-            <a href="https://www.instagram.com/p/C6vA5FvM4Qx/" class="event-link">Подробнее →</a>
-          </div>
-         
-          <div class="event-card">
-            <img src="events2.1.png" alt="Семинар 4" class="event-image" />
-            <a href="https://www.instagram.com/p/C6vA5FvM4Qx/" class="event-link">Подробнее →</a>
-          </div>
-          
+<section class="events-section" id="events">
+  <div class="publications-wrapper">
+    <h2 class="publications-title">События</h2>
+    <div class="events-scroll-wrapper">
+      <div class="events-track">
+        <div class="event-card">
+          <img src="events1.png" alt="Семинар 1" class="event-image" />
+          <a href="https://www.instagram.com/p/C6vA5FvM4Qx/" class="event-link">Подробнее →</a>
+        </div>
+        <div class="event-card">
+          <img src="events2.1.png" alt="Семинар 4" class="event-image" />
+          <a href="https://www.instagram.com/p/C6vA5FvM4Qx/" class="event-link">Подробнее →</a>
         </div>
       </div>
-    </section>
-<section class="preorder-section" id="preorder">
-  
-  
-  <div class="preorder-content">
-    <div class="single-mosaic-top-right">
-      <div class="row">
-        <div class="tile tile1"></div>
-        <div class="tile tile2"></div>
-      </div>
-      <div class="row">
-        <div class="tile tile3"></div>
-      </div>
     </div>
-    <div class="single-mosaic-bottom-left">
-      <div class="row">
-        <div class="tile tile1"></div>
-        <div class="tile tile2"></div>
-      </div>
-      <div class="row">
-        <div class="tile tile3"></div>
-      </div>
-    </div>
+  </div>
+</section>
+<section class="preorder-section">  
     <div class="preorder-header">
       <p class="preorder-subtitle">Pre-Order</p>
       <h2 class="preorder-title">Get Smart Insoles Now</h2>
     </div>
     <div class="preorder-container">
-      <div class="preorder-image">
-        <img src="phoneorder.png" alt="Instagram Profile on Phone">
-      </div>
       <form action="https://formspree.io/f/xanozvpn" method="POST" target="hidden_iframe" onsubmit="submitted=true" class="preorder-form" id="preorder-form">
         <input type="text" name="name" placeholder="Name" required>
         <input type="text" name="organization" placeholder="Organisation Name">
@@ -582,8 +602,10 @@ document.addEventListener('DOMContentLoaded', updateMetricsView);
           </div>
         </div>
       </form>
+      <div class="preorder-image">
+        <img src="phoneorder.png" alt="Instagram Profile on Phone">
+      </div>
       <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
-      
     </div>
   </div>
 </section>
@@ -760,18 +782,38 @@ document.addEventListener('DOMContentLoaded', updateMetricsView);
     
 </body>
 <script>
-  // Показ / скрытие подпункта «О нас»
-  function toggleSubmenu(event) {
+  // Показ / скрытие подпунктов меню с автозакрытием при клике вне меню
+  function toggleSubmenu(event, submenuId) {
     event.preventDefault();
-    const submenu = document.getElementById('tech-submenu');
-    // Переключаем между flex и none, чтобы соблюдать flex‑колонку из CSS
-    submenu.style.display = submenu.style.display === 'flex' ? 'none' : 'flex';
+    const submenu = document.getElementById(submenuId);
+    const isVisible = submenu.style.display === 'flex';
+
+    // Close all submenus
+    document.querySelectorAll('.tech-submenu').forEach(menu => {
+      menu.style.display = 'none';
+    });
+
+    // Toggle selected submenu
+    if (!isVisible) {
+      submenu.style.display = 'flex';
+    }
   }
 
-  // Автоматически закрываем подпункт при прокрутке страницы
-  window.addEventListener('scroll', () => {
-    const submenu = document.getElementById('tech-submenu');
-    if (submenu.style.display === 'flex') submenu.style.display = 'none';
+  // Close submenu if clicking outside
+  document.addEventListener('click', function (e) {
+    const isClickInsideNav = e.target.closest('nav');
+    if (!isClickInsideNav) {
+      document.querySelectorAll('.tech-submenu').forEach(menu => {
+        menu.style.display = 'none';
+      });
+    }
+  });
+
+  // Закрытие подменю при прокрутке страницы
+  window.addEventListener('scroll', function () {
+    document.querySelectorAll('.tech-submenu').forEach(menu => {
+      menu.style.display = 'none';
+    });
   });
 </script>
 </html>

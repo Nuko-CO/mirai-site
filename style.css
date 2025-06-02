@@ -9,7 +9,8 @@
   box-shadow: none;
 }
 html {
-scroll-behavior: smooth;
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px; /* Prevents anchor links from hiding content behind fixed header */
 }
 html, body {
   background-color: #000; /* Или #0a0f2c, если хочешь тёмно-синий */
@@ -36,6 +37,7 @@ body {
   width: 100%;
   top: 0;
   z-index: 999;
+  gap: 2rem;
 }
 
 .logo {
@@ -58,6 +60,8 @@ body {
   display: flex;
   align-items: center;
   gap: 2rem;
+  position: relative;
+  flex: 1;
 }
 
 .nav-links a,
@@ -1848,6 +1852,7 @@ gap: 200px;
   border-radius: 6px;
   top: 2.6rem;
   left: 0;
+  right: auto;
   top: 100%;
   transform: none;
   z-index: 1000;
@@ -1855,6 +1860,11 @@ gap: 200px;
   flex-direction: column;
   align-items: center;
   width: auto;
+}
+
+/* Ensure submenu aligns under each nav item */
+.nav-links .submenu-container {
+  position: relative;
 }
 
 /* Ensure nav-links is relatively positioned for submenu */
@@ -1870,8 +1880,8 @@ gap: 200px;
   position: relative;
 }
 
-/* Show submenu only when hovering the tech-parent */
-.nav-links .tech-parent:hover .tech-submenu {
+/* Show submenu only when hovering the submenu-container */
+.nav-links .submenu-container:hover .tech-submenu {
   display: flex;
 }
 
@@ -2036,6 +2046,8 @@ gap: 200px;
   /* allow hovered cards to rise */
   overflow-x: hidden;
   overflow-y: visible;
+  scroll-margin-top: 160px;
+  position: relative;
 }
 
 .publications-wrapper {
@@ -2069,6 +2081,8 @@ gap: 200px;
   overflow-x: auto;
   overflow-y: visible;  /* no vertical clipping */
   scroll-snap-type: x mandatory;
+  scroll-padding-right: 0;
+  padding-right: 2rem;
   padding-bottom: 1.5rem;
   margin-bottom: 1rem;
   max-width: 100%;
@@ -2080,13 +2094,21 @@ gap: 200px;
   gap: 2.5rem;
   width: max-content;
   scroll-snap-align: start;
+  scroll-snap-align: start;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0.75rem;  /* breathing space so card lift isn’t hidden */
+  padding-right: 1rem;
 }
 
+/* Publication card styles */
 .publication-card {
   flex: 0 0 340px;
+  min-width: 340px;
+  max-width: 340px;
+  white-space: normal;
+  word-wrap: break-word;
+  word-break: break-word;
   background: linear-gradient(135deg, #ffffff 70%, #eaf3ff 100%);
   padding: 2rem 1.5rem;
   border-radius: 24px;
@@ -2097,15 +2119,24 @@ gap: 200px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  scroll-snap-align: start;
+  scroll-snap-align: center;
   border: 1.5px solid #e6eaf3;
+}
+/* Hide scrollbar for publications-list-scroll */
+.publications-list-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.publications-list-scroll {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;    /* Firefox */
 }
 
 .publication-card:hover {
   transform: translateY(-6px) scale(1.025);
   box-shadow: 0 18px 52px rgba(77, 171, 235, 0.16), 0 8px 32px rgba(0, 0, 0, 0.10);
   border: 1.5px solid #4debc9;
-  z-index: 20;          /* elevate above siblings */
+  z-index: 20;
 }
 
 .pub-year {
@@ -2213,15 +2244,110 @@ gap: 200px;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
+/* ==========================
+   Metrics Section Redesign
+   ========================== */
 .metrics-section {
-  margin-top: 5rem;
-  padding: 3rem 2rem;
-  background-color: #ffffff;
-  border-radius: 20px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-  color: #0f172a;
+  padding: 5rem 2rem;
+  background-color: transparent;
   text-align: center;
+}
+
+.metrics-text-container {
+  max-width: 960px;
+  margin: 0 auto 2rem auto;
+}
+
+.metrics-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  filter: brightness(0) saturate(100%) invert(20%) sepia(5%) saturate(250%) hue-rotate(200deg) brightness(90%) contrast(85%);
+  color: #0f172a;
+  margin-bottom: 0.5rem;
+}
+
+.metrics-subtitle {
+  font-size: 1.1rem;
+  filter: brightness(0) saturate(100%) invert(20%) sepia(5%) saturate(250%) hue-rotate(200deg) brightness(90%) contrast(85%);
+  color: #0f172a;
+  margin-bottom: 2rem;
+}
+
+.metrics-image-box {
+  background: 
+    linear-gradient(to bottom right, rgba(0,71,173,0.35), rgba(0,71,173,0.25)),
+    url('big_metrics.JPG');
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.2);
+  padding: 3rem 2.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
   position: relative;
+  z-index: 1;
+}
+
+
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 0;
+  max-width: 960px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* metric-item - glassy card style */
+/* --- Metric Item Glassy Card --- */
+.metric-item {
+  background: linear-gradient(145deg, rgba(8,18,40,0.92), rgba(17,42,92,0.9));
+  border: 1px solid rgba(77, 235, 201, 0.22);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  transition: 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.metric-item img {
+  max-width: 200px;
+  height: auto;
+  margin-bottom: 0;
+  filter: drop-shadow(0 0 12px rgba(77, 235, 201, 0.95))
+          brightness(1.35)
+          saturate(2.2)
+          hue-rotate(8deg);
+  transition: transform 0.3s ease;
+}
+
+.metric-item p {
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 1.15rem;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  margin: 0;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+.metric-item:hover img {
+  transform: scale(1.1);
+}
+
+.metric-item:hover {
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.3);
+  transform: translateY(-8px) scale(1.05);
 }
 
 /* tone‑down heading & subtitle inside metrics section */
@@ -2239,13 +2365,13 @@ gap: 200px;
 .metrics-title {
   font-size: 1.75rem;
   font-weight: 700;
-  color: #ffffff;
+  color: #e6f0ff;
   margin-bottom: 1rem;
 }
 
 .metrics-subtitle {
   font-size: 1rem;
-  color: #b3c2e0;
+  color: #cbdaf5;
   margin-bottom: 2rem;
 }
 
@@ -2878,3 +3004,10 @@ gap: 200px;
   margin-top: 0.75rem;
   color: #6b7280;
 }
+.nav-right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+/* (duplicate .metric-item styles removed above) */
