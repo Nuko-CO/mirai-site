@@ -27,32 +27,36 @@
       </div>
         <nav class="nav-links">
           <div class="submenu-container">
-            <a href="#" onclick="toggleSubmenu(event, 'submenu-about')">О нас</a>
+            <a href="#" onclick="toggleSubmenu(event, 'submenu-about')" data-key="nav-about"></a>
             <div class="tech-submenu" id="submenu-about" style="display: none;">
-              <a href="#problem" class="submenu-link">Проблема</a>
-              <a href="#solution" class="submenu-link">Решение</a>
+              <a href="#problem" class="submenu-link" data-key="nav-problem"></a>
+              <a href="#solution" class="submenu-link" data-key="nav-solution"></a>
             </div>
           </div>
           <div class="submenu-container">
-            <a href="#" onclick="toggleSubmenu(event, 'submenu-tech')">Технологии</a>
+            <a href="#" onclick="toggleSubmenu(event, 'submenu-tech')" data-key="nav-tech"></a>
             <div class="tech-submenu" id="submenu-tech" style="display: none;">
-              <a href="#how" class="submenu-link">Как работает MIRAI</a>
-              <a href="#metrics" class="submenu-link">Метрики</a>
-              <a href="#service" class="submenu-link">Применение</a>
+              <a href="#how" class="submenu-link" data-key="nav-how"></a>
+              <a href="#metrics" class="submenu-link" data-key="nav-metrics"></a>
+              <a href="#service" class="submenu-link" data-key="nav-service"></a>
             </div>
           </div>
-          <a href="#publications">Публикации</a>
+          <a href="#publications" data-key="nav-publications"></a>
           <div class="submenu-container">
-            <a href="#" onclick="toggleSubmenu(event, 'submenu-blog')">Блог</a>
+            <a href="#" onclick="toggleSubmenu(event, 'submenu-blog')" data-key="nav-blog"></a>
             <div class="tech-submenu" id="submenu-blog" style="display: none;">
-              <a href="#news" class="submenu-link">Новости</a>
-              <a href="#testimonials" class="submenu-link">Отзывы</a>
-              <a href="#events" class="submenu-link">События</a>
+              <a href="#news" class="submenu-link" data-key="nav-news"></a>
+              <a href="#testimonials" class="submenu-link" data-key="nav-testimonials"></a>
+              <a href="#events" class="submenu-link" data-key="nav-events"></a>
             </div>
           </div>
-          <a href="#contact">Контакты</a>
+          <a href="#contact" data-key="nav-contact"></a>
           <div class="nav-right">
-            <span class="lang">KZ | EN | RU</span>
+            <span class="lang">
+              <a href="#" onclick="setLanguage('kz')">KZ</a> |
+              <a href="#" onclick="setLanguage('en')">EN</a> |
+              <a href="#" onclick="setLanguage('ru')">RU</a>
+            </span>
             <a href="https://www.instagram.com/miraitech.ai" class="social-link" target="_blank" aria-label="Instagram">
               <i class="mdi mdi-instagram"></i>
             </a>
@@ -66,9 +70,9 @@
   <section class="hero">
     <div class="hero-text">
       <span class="mini-title">MIRAI TECH</span>
-      <h1><strong>Ходьба</strong> — путь<br><em>к здоровью</em></h1>
-      <p>Mirai Smart Insole анализирует давление и походку в реальном времени, помогая выявить отклонения и восстановить баланс движений.</p>
-      <a href="https://forms.gle/cZw4tjWsRddnAWAL6" class="cta-button">Попробовать бесплатно</a>
+      <h1 data-key="hero-title"></h1>
+      <p data-key="hero-desc"></p>
+      <a href="https://forms.gle/cZw4tjWsRddnAWAL6" class="cta-button" data-key="cta-button"></a>
     </div>
     <div class="hero-logo">
       <img src="mirai4.png" alt="Logo" />
@@ -77,8 +81,8 @@
 <section class="problems-section" id="problem">
   <div class="problems-container">
     <div class="problems-header">
-      <h2 class="problems-title"> Что мешает пациентам восстанавливаться быстрее?</h2>
-      <p class="problems-subtitle">Эти проблемы ежедневно встречаются в практике врачей и тренеров. Мы создаём инструмент, который упрощает диагностику и усиливает эффект терапии.</p>
+      <h2 class="problems-title" data-key="problems-title"></h2>
+      <p class="problems-subtitle" data-key="problems-subtitle"></p>
     </div>
 
     <div class="problem-slider">
@@ -98,14 +102,10 @@
   <div class="tech-container">
     <div class="tech-header">
       <div class="tech-info">
-        <p class="tech-label">Инновации в каждом шаге</p>
-        <h2>Smart Insole: стельки нового поколения</h2>
-        <p class="tech-desc">
-          Mirai Smart Insoles - это гибкие сенсорные стельки, которые измеряют данные и анализируют вашу походку в режиме реального времени.
-          Интеллектуальные стельки, созданные учёными и врачами.
-          Просты в использовании — эффективны в результатах.
-        </p>
-        <a href="https://youtu.be/FYdaoMKvWgM?si=i2eZqBrzlG_G4fMS" class="cta-button tech-button">Смотреть демо</a>
+        <p class="tech-label" data-key="technology-label"></p>
+        <h2 data-key="technology-title"></h2>
+        <p class="tech-desc" data-key="technology-desc"></p>
+        <a href="https://youtu.be/FYdaoMKvWgM?si=i2eZqBrzlG_G4fMS" class="cta-button tech-button" data-key="technology-button"></a>
       </div>
       <img class="tech-gif" src="insoles.PNG" alt="Smart Insole">
     </div>
@@ -113,99 +113,96 @@
     <div class="tech-features-grid">
       <div class="feature">
         <div class="icon mdi mdi-brain"></div>
-        <h3>ИИ-обработка данных</h3>
-        <p>Автоматический анализ походки на базе алгоритмов машинного обучения.</p>
+        <h3 data-key="tech-feature-1-title"></h3>
+        <p data-key="tech-feature-1-text"></p>
       </div>
       <div class="feature">
         <div class="icon mdi mdi-cellphone-link"></div>
-        <h3>Быстрая диагностика за 5 минут</h3>
-        <p>Врачи получают объективную информацию уже во время первого приёма — больше не нужно тратить часы на наблюдение и субъективные тесты.</p>
+        <h3 data-key="tech-feature-2-title"></h3>
+        <p data-key="tech-feature-2-text"></p>
       </div>
-      
       <div class="feature">
         <div class="icon mdi mdi-run-fast"></div>
-        <h3>Объективная оценка прогресса</h3>
-        <p>Вы больше не полагаетесь только на жалобы пациента. Теперь есть цифровые показатели, которые можно сравнивать от сессии к сессии.</p>
+        <h3 data-key="tech-feature-3-title"></h3>
+        <p data-key="tech-feature-3-text"></p>
       </div>
       <div class="feature">
         <div class="icon mdi mdi-cloud-upload-outline"></div>
-        <h3>Автоматический отчёт</h3>
-        <p>Сокращает рутинную документацию. Специалисту остаётся только подписать и передать пациенту результат или сохранить в базе данных.</p>
+        <h3 data-key="tech-feature-4-title"></h3>
+        <p data-key="tech-feature-4-text"></p>
       </div>
       <div class="feature">
         <div class="icon mdi mdi-brain"></div>
-        <h3>Непрерывный контроль вне клиники</h3>
-        <p>Возможность отслеживать походку не только в клинике, но и дома, в спортзале или на улице.
-          Наблюдение за динамикой пациента в реальных условиях.</p>
+        <h3 data-key="tech-feature-5-title"></h3>
+        <p data-key="tech-feature-5-text"></p>
       </div>
       <div class="feature">
         <div class="icon mdi mdi-brain"></div>
-        <h3>Простой интерфейс для врачей и пациентов</h3>
-        <p>Не требует обучения или специального оборудования. Всё запускается через приложение — на компьютере или телефоне.</p>
+        <h3 data-key="tech-feature-6-title"></h3>
+        <p data-key="tech-feature-6-text"></p>
       </div>
     </div>
     <div class="how-it-works dark-layout" id="how">
-      <h3 class="how-title">Как работает MIRAI Smart Insole?</h3>
-      <p class="how-subtitle">Всего 4 шага — и вы получаете цифровой портрет походки</p>
+      <h3 class="how-title" data-key="how-title"></h3>
+      <p class="how-subtitle" data-key="how-subtitle"></p>
       <div class="how-steps condensed-layout">
         <div class="how-step">
           <div class="step-number dark">1</div>
           <div class="step-icon mdi mdi-shoe-print"></div>
-          <h4>Установите стельки </h4>
-          <p>Выберите нужный размер стельки и вставьте ее в обувь.</p>
+          <h4 data-key="how-step-1-title"></h4>
+          <p data-key="how-step-1-text"></p>
         </div>
         <div class="how-step">
           <div class="step-number dark">2</div>
           <div class="step-icon mdi mdi-bluetooth"></div>
-          <h4>Подключитесь через Bluetooth</h4>
-          <p>Запустите приложение и следуйте инструкциям на экране.</p>
+          <h4 data-key="how-step-2-title"></h4>
+          <p data-key="how-step-2-text"></p>
         </div>
         <div class="how-step">
           <div class="step-number dark">3</div>
           <div class="step-icon mdi mdi-walk"></div>
-          <h4>Пройдите 10 шагов</h4>
-          <p>Просто пройдитесь, пока стельки собирают ваши данные и показывают их в режиме реального времени.</p>
+          <h4 data-key="how-step-3-title"></h4>
+          <p data-key="how-step-3-text"></p>
         </div>
         <div class="how-step">
           <div class="step-number dark">4</div>
           <div class="step-icon mdi mdi-file-chart"></div>
-          <h4>Получите отчёт</h4>
-          <p>Результаты автоматически преобразуются в отчёт, который вы можете сохранить, распечатать или отправить по почте.</p>
+          <h4 data-key="how-step-4-title"></h4>
+          <p data-key="how-step-4-text"></p>
         </div>
-        
       </div>
     </div>
-
+  </section>
 <section class="metrics-section" id="metrics">
   <div class="metrics-text-container">
-    <h3 class="metrics-title">Метрики анализа походки</h3>
-    <p class="metrics-subtitle">Просматривайте ключевые данные о движении, давлении и симметрии шага.</p>
+    <h3 class="metrics-title" data-key="metrics-title"></h3>
+    <p class="metrics-subtitle" data-key="metrics-subtitle"></p>
   </div>
   <div class="metrics-image-box">
     <div class="metrics-grid">
       <div class="metric-item">
         <img src="metrics_icon1.png" alt="Асимметрия">
-        <p>Асимметрия</p>
+        <p data-key="metric-1"></p>
       </div>
       <div class="metric-item">
         <img src="metrics_icon2.png" alt="Длина шага">
-        <p>Длина шага</p>
+        <p data-key="metric-2"></p>
       </div>
       <div class="metric-item">
         <img src="metrics_icon3.png" alt="Распределение нагрузки">
-        <p>Распределение нагрузки</p>
+        <p data-key="metric-3"></p>
       </div>
       <div class="metric-item">
         <img src="metrics_icon4.png" alt="Динамика">
-        <p>Динамика</p>
+        <p data-key="metric-4"></p>
       </div>
       <div class="metric-item">
         <img src="metrics_icon5.png" alt="Фазы контакта">
-        <p>Фазы контакта</p>
+        <p data-key="metric-5"></p>
       </div>
       <div class="metric-item">
         <img src="metrics_icon6.png" alt="Фазы переката">
-        <p>Фазы переката</p>
+        <p data-key="metric-6"></p>
       </div>
     </div>
   </div>
@@ -244,9 +241,8 @@ document.addEventListener('DOMContentLoaded', updateMetricsView);
 
 <section class="video-section">
   <div class="video-section-header">
-    <h3 class="how-title">Реальные люди. Настоящие шаги. Результаты в движении.</h3>
-    <p class="how-subtitle">
-      От диагностики до прогресса — всё видно на экране.</p>
+    <h3 class="how-title" data-key="video-title"></h3>
+    <p class="how-subtitle" data-key="video-subtitle"></p>
   </div>
 
   <div class="video-carousel-container">
@@ -293,28 +289,24 @@ document.addEventListener('DOMContentLoaded', updateMetricsView);
 
  <!-- Отредактировано для улучшенного отображения в соответствии с Figma -->
  <!-- Service Section: Умные и Удобные Стельки -->
- <section class="service-section"id="service" >
+ <section class="service-section" id="service">
   <div class="service-container">
-    <h2 class="section-title">Применение</h2>
-    <p class="section-subtitle">
-      Мы меняем подход к реабилитации и мониторингу движений.
-      MIRAI TECH интегрируется в любые условия — от клиник и спортивных центров до домашних тренировок. Это — универсальный инструмент, который работает на результат.
-    </p>
+    <h2 class="section-title" data-key="service-title"></h2>
+    <p class="section-subtitle" data-key="service-subtitle"></p>
 
     <!-- Two‑column showcase -->
     <div class="application-cards">
       <div class="application-card sport-card">
         <div class="card-overlay">
-          <h3 class="card-title">MIRAI TECH<br><span>в спорте</span></h3>
-          <p class="card-text">Используется для анализа походки и распределения нагрузки у профессиональных спортсменов.<br>Помогает скорректировать технику и предотвратить травмы.</p>
+          <h3 class="card-title" data-key="card-sport-title"></h3>
+          <p class="card-text" data-key="card-sport-text"></p>
         </div>
       </div>
 
       <div class="application-card rehab-card">
         <div class="card-overlay">
-          <h3 class="card-title">MIRAI TECH<br><span>в клиниках и реабилитации</span></h3>
-          <p class="card-text">Врачи используют стельки <br>для объективной оценки состояния пациента и адаптации реабилитационных программ.
-          </p>
+          <h3 class="card-title" data-key="card-rehab-title"></h3>
+          <p class="card-text" data-key="card-rehab-text"></p>
         </div>
       </div>
     </div>
@@ -322,7 +314,7 @@ document.addEventListener('DOMContentLoaded', updateMetricsView);
 </section>
 <section class="publications-section" id="publications">
   <div class="publications-wrapper">
-    <h2 class="publications-title">Наши публикации</h2>
+    <h2 class="publications-title" data-key="publications-title"></h2>
     <div class="publications-list-scroll horizontal-scroll">
       <div class="publications-list">
         <div class="publication-card">
@@ -367,134 +359,124 @@ document.addEventListener('DOMContentLoaded', updateMetricsView);
 </section>
 <section class="news-section" id="news">
   <div class="news-header">
-    <h2 class="news-title">Новости</h2>
+    <h2 class="news-title" data-key="news-title"></h2>
   </div>
   <div class="news-scroll-wrapper">
     <div class="news-grid">
       <div class="news-card">
         <img src="news1.jpg" alt="Digital Business" class="news-image">
         <div class="news-meta">23.04.2025</div>
-        <h3 class="news-name">Digital Business</h3>
-        <p class="news-description">Инженеры Гульнур Калимулдина и Азамат Ешмухаметов — ученые из Назарбаев Университета. Встретились в Японии, где получали PhD, а вернувшись на родину основали стартап Mirai Tech..</p>
-        <a href="https://digitalbusiness.kz/2025-04-23/kazahstanskie-uchenie-pridumali-umnie-stelki-rasskazivaem-v-chem-ih-unikalnost/" class="news-link">Подробнее →</a>
+        <h3 class="news-name" data-key="news-1-title"></h3>
+        <p class="news-description" data-key="news-1-desc"></p>
+        <a href="https://digitalbusiness.kz/2025-04-23/kazahstanskie-uchenie-pridumali-umnie-stelki-rasskazivaem-v-chem-ih-unikalnost/" class="news-link" data-key="news-1-link"></a>
       </div>
       <div class="news-card">
         <img src="news2.jpg" alt="Steppe" class="news-image">
         <div class="news-meta">05.03.2025</div>
-        <h3 class="news-name">Developing innovative products</h3>
-        <p class="news-description">Discover how a startup from Kazakhstan is developing innovative products that help restore motor coordination, improve balance, and enable people to return to an active and fulfilling life..</p>
-        <a href="https://the-tech.kz/mirai-tech-a-startup-transforming-rehabilitation-in-medicine-and-sports/" class="news-link">Learn more →</a>
+        <h3 class="news-name" data-key="news-2-title"></h3>
+        <p class="news-description" data-key="news-2-desc"></p>
+        <a href="https://the-tech.kz/mirai-tech-a-startup-transforming-rehabilitation-in-medicine-and-sports/" class="news-link" data-key="news-2-link"></a>
       </div>
       <div class="news-card">
         <img src="news3.jpeg" alt="Forbes Kazakhstan" class="news-image">
         <div class="news-meta">20.12.2025</div>
-        <h3 class="news-name">Grand Prize at NURIS Founders' School</h3>
-        <p class="news-description">SEDS Professors and Students' Project, Mirai Tech, Wins Grand Prize at NURIS Founders' School and Secures Spot at TechCrunch Disrupt 2024 in San Francisco..</p>
-        <a href="https://seds.nu.edu.kz/news/tpost/i16i0udoc1-seds-professors-and-students-project-mir" class="news-link">Learn more→</a>
+        <h3 class="news-name" data-key="news-3-title"></h3>
+        <p class="news-description" data-key="news-3-desc"></p>
+        <a href="https://seds.nu.edu.kz/news/tpost/i16i0udoc1-seds-professors-and-students-project-mir" class="news-link" data-key="news-3-link"></a>
       </div>
       <div class="news-card">
-        <img src="news4.jpg" alt="Startup Voice" class="news-image">
+        <img src="news6.png" alt="Startup Voice" class="news-image">
         <div class="news-meta">18.01.2025</div>
-        <h3 class="news-name">Пилотное тестирование</h3>
-        <p class="news-description">Mirai Tech инновациялық сенсорлық технологиямызды Денсаулық сақтау Вице-Министрі Оспанов Ербол Дүйсебайұлына көрсетіп қолдау алдық..</p>
-        <a href="https://www.instagram.com/reel/DFwRqiqo2fA/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" class="news-link">Подробнее →</a>
+        <h3 class="news-name" data-key="news-4-title"></h3>
+        <p class="news-description" data-key="news-4-desc"></p>
+        <a href="https://www.instagram.com/reel/DFwRqiqo2fA/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" class="news-link" data-key="news-4-link"></a>
       </div>
       <div class="news-card">
         <img src="news5.png" alt="TechCrunch" class="news-image">
         <div class="news-meta">05.03.2025</div>
-        <h3 class="news-name">Партнерство с UMC</h3>
-        <p class="news-description">Команда MIRAI TECH посетила отделение педиатрической реабилитации под руководством Орынкуль Каладиновой, где обсудили, как умные стельки могут помочь детям</p>
-        <a href="https://www.instagram.com/p/DI3MgimASUN/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" class="news-link">Подробнее →</a>
+        <h3 class="news-name" data-key="news-5-title"></h3>
+        <p class="news-description" data-key="news-5-desc"></p>
+        <a href="https://www.instagram.com/p/DI3MgimASUN/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" class="news-link" data-key="news-5-link"></a>
       </div>
       <div class="news-card">
         <img src="news6.png" alt="MedTech Review" class="news-image">
         <div class="news-meta">10.05.2025</div>
-        <h3 class="news-name">Травматология и ортопедия </h3>
-        <p class="news-description">MIRAI TECH с гордостью объявляет о начале пилотного тестирования с Национальным научным центром травматологии и ортопедии им. академика Н.Д. Батпенова. </p>
-        <a href="https://www.instagram.com/p/DHWOFuWgcJz/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" class="news-link">Подробнее →</a>
+        <h3 class="news-name" data-key="news-6-title"></h3>
+        <p class="news-description" data-key="news-6-desc"></p>
+        <a href="https://www.instagram.com/p/DHWOFuWgcJz/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" class="news-link" data-key="news-6-link"></a>
       </div>
       <div class="news-card">
         <img src="news7.png" alt="TechCrunch" class="news-image">
         <div class="news-meta">05.03.2025</div>
-        <h3 class="news-name">Начало пилота в УДП</h3>
-        <p class="news-description">Мы рады сообщить, что достигнута договорённость о запуске пилотного тестирования нашей технологии совместно с травматологическим и реабилитационным..</p>
-        <a href="https://www.instagram.com/p/DJThi_eza_O/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA%3D%3D" class="news-link">Подробнее →</a>
+        <h3 class="news-name" data-key="news-7-title"></h3>
+        <p class="news-description" data-key="news-7-desc"></p>
+        <a href="https://www.instagram.com/p/DJThi_eza_O/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA%3D%3D" class="news-link" data-key="news-7-link"></a>
       </div>
       <div class="news-card">
         <img src="news8.png" alt="TechCrunch" class="news-image">
         <div class="news-meta">05.03.2025</div>
-        <h3 class="news-name">Городская больница № 2</h3>
-        <p class="news-description">На этой неделе команда Mirai Tech посетила Многопрофильную городскую больницу № 2, где мы представили потенциал нашей технологии..</p>
-        <a href="https://www.instagram.com/p/DJThi_eza_O/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA%3D%3D" class="news-link">Подробнее →</a>
+        <h3 class="news-name" data-key="news-8-title"></h3>
+        <p class="news-description" data-key="news-8-desc"></p>
+        <a href="https://www.instagram.com/p/DJThi_eza_O/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA%3D%3D" class="news-link" data-key="news-8-link"></a>
       </div>
-      
       <div class="news-card">
         <img src="news10.png" alt="TechCrunch" class="news-image">
         <div class="news-meta">05.03.2025</div>
-        <h3 class="news-name">Павел Самсонов и MIRAI TECH</h3>
-        <p class="news-description">Павел Самсонов, специалист по реабилитации, посетил лабораторию MIRAItech и лично протестировал новый прототип сенсорных стелек.</p>
-        <a href="https://www.instagram.com/reel/DIl0rlxA8nO/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA%3D%3D" class="news-link">Подробнее →</a>
+        <h3 class="news-name" data-key="news-9-title"></h3>
+        <p class="news-description" data-key="news-9-desc"></p>
+        <a href="https://www.instagram.com/reel/DIl0rlxA8nO/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA%3D%3D" class="news-link" data-key="news-9-link"></a>
       </div>
-      
     </div>
   </div>
 </section>
 <section class="testimonials-section" id="testimonials">
+  
   <div class="testimonial-scroll-wrapper">
     <div class="testimonial-grid">
-    <div class="testimonial-card">
-      <div class="testimonial-header">
-        <img class="testimonial-avatar" src="sergei_olimp.jpeg" alt="Constance Chu">
-        <div class="testimonial-info">
-          <p class="testimonial-name">Роман Иванов</p>
-          <p class="testimonial-role">Золотой медалист Азиатских игр по лыжному фристайлу</p>
+      <div class="testimonial-card">
+        <div class="testimonial-header">
+          <img class="testimonial-avatar" src="sergei_olimp.jpeg" alt="Constance Chu">
+          <div class="testimonial-info">
+            <p class="testimonial-name" data-key="testimonial-1-name"></p>
+            <p class="testimonial-role" data-key="testimonial-1-role"></p>
+          </div>
         </div>
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text" data-key="testimonial-1-text"></p>
       </div>
-      <div class="testimonial-stars">★★★★★</div>
-      <p class="testimonial-text">
-        “Четко увидел разницу нагрузки по ногам, понял, над чем надо работать после интерпретации результатов врачом.”
-      </p>
-    </div>
-
-    <div class="testimonial-card">
-      <div class="testimonial-header">
-        <img class="testimonial-avatar" src="orys.JPG" alt="Bruce Ford">
-        <div class="testimonial-info">
-          <p class="testimonial-name">Таисия Дураченко</p>
-          <p class="testimonial-role">Врач спортивной медицины и реабилитации<br>CEO</p>
+      <div class="testimonial-card">
+        <div class="testimonial-header">
+          <img class="testimonial-avatar" src="orys.JPG" alt="Bruce Ford">
+          <div class="testimonial-info">
+            <p class="testimonial-name" data-key="testimonial-2-name"></p>
+            <p class="testimonial-role" data-key="testimonial-2-role"></p>
+          </div>
         </div>
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text" data-key="testimonial-2-text"></p>
       </div>
-      <div class="testimonial-stars">★★★★★</div>
-      <p class="testimonial-text">
-        “Теперь можно не только полагаться на впечатления пациента, но и демонстрировать объективные данные прогресса.”
-      </p>
-    </div>
-    <div class="testimonial-card">
-      <div class="testimonial-header">
-        <img class="testimonial-avatar" src="kazakh.png" alt="Bruce Ford">
-        <div class="testimonial-info">
-          <p class="testimonial-name">Мөлдір, 30 лет</p>
-          <p class="testimonial-role">Офисный работник, домашний пользователь</p>
+      <div class="testimonial-card">
+        <div class="testimonial-header">
+          <img class="testimonial-avatar" src="kazakh.png" alt="Bruce Ford">
+          <div class="testimonial-info">
+            <p class="testimonial-name" data-key="testimonial-3-name"></p>
+            <p class="testimonial-role" data-key="testimonial-3-role"></p>
+          </div>
         </div>
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text" data-key="testimonial-3-text"></p>
       </div>
-      <div class="testimonial-stars">★★★★★</div>
-      <p class="testimonial-text">
-        “Я взяла стельки для профилактики — хотела узнать, почему устаёт спина. И оказалось, что у меня перекос походки. Я даже пошла к остеопату с отчётом! Сейчас делаю простые упражнения, которые посоветовали в клинике, и чувствую, как стало легче.”
-      </p>
-    </div>
-    <div class="testimonial-card">
-      <div class="testimonial-header">
-        <img class="testimonial-avatar" src="Bolat.png" alt="Bruce Ford">
-        <div class="testimonial-info">
-          <p class="testimonial-name">Болат, 65 лет</p>
-          <p class="testimonial-role">Пациент после инсульта</p>
+      <div class="testimonial-card">
+        <div class="testimonial-header">
+          <img class="testimonial-avatar" src="Bolat.png" alt="Bruce Ford">
+          <div class="testimonial-info">
+            <p class="testimonial-name" data-key="testimonial-4-name"></p>
+            <p class="testimonial-role" data-key="testimonial-4-role"></p>
+          </div>
         </div>
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text" data-key="testimonial-4-text"></p>
       </div>
-      <div class="testimonial-stars">★★★★★</div>
-      <p class="testimonial-text">
-        “После инсульта у меня была проблема с равновесием и асимметрией походки. Mirai Tech Smart Insoles показали это сразу. Теперь врач корректирует программу реабилитации на основе конкретных цифр — и мне реально стало легче ходить.”
-      </p>
-    </div>
     </div> <!-- Закрытие testimonial-grid -->
   </div> <!-- Закрытие testimonial-scroll-wrapper -->
 </section>
@@ -503,8 +485,7 @@ document.addEventListener('DOMContentLoaded', updateMetricsView);
   
 <section class="partners-section" id="partners">
   <div class="partners-intro">
-    <h3 class="partners-subheading">Partners</h3>
-    
+    <h3 class="partners-subheading" data-key="partners-subheading"></h3>
     <!-- 
 <h3 class="partners-subheading">Trusted by Leading Clinics and Institutions</h3>
 <p class="partners-description">MIRAI TECH is already used by elite sports clinics and hospitals for diagnosing and improving patient mobility and performance.</p>
@@ -513,13 +494,14 @@ document.addEventListener('DOMContentLoaded', updateMetricsView);
   
   <div class="partners-scroll-wrapper">
     <div class="partners-logos">
-      <img src="partners/part1.PNG" alt="IDSPORT">
-      <img src="partners/part7.PNG" alt="Городская многопрофильная больница №2">
       <img src="partners/part3.png" alt="In Motion Sport Clinic">
-      <img src="partners/part4.PNG" alt="Green Clinic">
-      <img src="ortodok.png" alt="ORTODok">
+      <img src="partners/part1.PNG" alt="IDSPORT">
       <img src="univee.PNG" alt="Medical Center of the President Administration">
       <img src="partners/part5.PNG" alt="национальный центр травмотологиии">
+      <img src="partners/part7.PNG" alt="Городская многопрофильная больница №2">
+      <img src="partners/part4.PNG" alt="Green Clinic">
+      <img src="ortodok.png" alt="ORTODok">
+      
     </div>
   </div>
 </section>
@@ -665,12 +647,8 @@ document.addEventListener('DOMContentLoaded', updateMetricsView);
         In-house technology.<br />
         Made in Kazakhstan.
       </h2>
-
-      <p class="made-description">
-        Каждая пара MIRAI Smart Insole создаётся на нашем производстве в Астане — от идеи до готового изделия. Это позволяет нам контролировать качество на всех этапах и внедрять инновации быстрее — от сенсоров до алгоритмов искусственного интеллекта.
-      </p>
+      <p class="made-description" data-key="made-description"></p>
     </div>
-
     <div class="made-logos">
       <!-- Замените src на свои файлы/иконки -->
       <img src="madeinkz.png" alt="Made in Kazakhstan" class="made-logo" />
@@ -680,16 +658,16 @@ document.addEventListener('DOMContentLoaded', updateMetricsView);
 </section>
 <section class="events-section" id="events">
   <div class="publications-wrapper">
-    <h2 class="publications-title">События</h2>
+    <h2 class="publications-title" data-key="events-title"></h2>
     <div class="events-scroll-wrapper">
       <div class="events-track">
         <div class="event-card">
           <img src="events1.png" alt="Семинар 1" class="event-image" />
-          <a href="https://www.instagram.com/p/DJ6UStLzhCc/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA== " class="event-link">Подробнее →</a>
+          <a href="https://www.instagram.com/p/DJ6UStLzhCc/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" class="event-link" data-key="event-1-link"></a>
         </div>
         <div class="event-card">
           <img src="events2.1.png" alt="Семинар 4" class="event-image" />
-          <a href="https://www.instagram.com/p/DJ6UrQOz9Hp/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" class="event-link">Подробнее →</a>
+          <a href="https://www.instagram.com/p/DJ6UrQOz9Hp/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" class="event-link" data-key="event-2-link"></a>
         </div>
       </div>
     </div>
@@ -697,24 +675,22 @@ document.addEventListener('DOMContentLoaded', updateMetricsView);
 </section>
 <section class="preorder-section">  
     <div class="preorder-header">
-      <p class="preorder-subtitle">Pre-Order</p>
-      <h2 class="preorder-title">Get Smart Insoles Now</h2>
+      <p class="preorder-subtitle" data-key="preorder-subtitle"></p>
+      <h2 class="preorder-title" data-key="preorder-title"></h2>
     </div>
     <div class="preorder-container">
       <form action="https://formspree.io/f/xanozvpn" method="POST" target="hidden_iframe" onsubmit="submitted=true" class="preorder-form" id="preorder-form">
-        <input type="text" name="name" placeholder="Name" required>
-        <input type="text" name="organization" placeholder="Organisation Name">
-        <input type="email" name="email" placeholder="Email" required>
-        <input type="tel" id="phone" name="phone" placeholder="+7 (___) ___-__-__" maxlength="18" required>
-        <textarea name="message" placeholder="Message"></textarea>
-        <button type="submit" class="preorder-button">
-          Make Pre-Order <span class="mdi mdi-arrow-right"></span>
-        </button>
+        <input type="text" name="name" placeholder="Name" data-key="form-name-placeholder" required>
+        <input type="text" name="organization" placeholder="Organization Name" data-key="form-org-placeholder">
+        <input type="email" name="email" placeholder="Email" data-key="form-email-placeholder" required>
+        <input type="tel" id="phone" name="phone" placeholder="+7 (___) ___-__-__" data-key="form-phone-placeholder" maxlength="18" required>
+        <textarea name="message" placeholder="Message" data-key="form-message-placeholder"></textarea>
+        <button type="submit" class="preorder-button" data-key="form-button">Make Pre-Order</button>
         <div id="successMessage" class="success-popup" style="display: none;">
           <div class="success-container">
             <img src="https://cdn-icons-png.flaticon.com/512/845/845646.png" alt="Success" class="success-icon">
-            <h3>Заказ оформлен!</h3>
-            <p>Спасибо за ваш заказ. Мы свяжемся с вами в ближайшее время.</p>
+            <h3 data-key="form-success-title"></h3>
+            <p data-key="form-success-text"></p>
           </div>
         </div>
       </form>
@@ -733,7 +709,7 @@ document.addEventListener('DOMContentLoaded', updateMetricsView);
     <div class="footer-container">
       <div class="footer-left">
         <img src="MiraiLogo.png" alt="MIRAI TECH logo" class="footer-logo" />
-        <p class="footer-desc">Технология MiraiTech разработана для лёгкой интеграции в повседневную жизнь.</p>
+        <p class="footer-desc" data-key="footer-description"></p>
         <div class="social-icons">
           <a href="https://www.instagram.com/miraitech.ai?igsh=MWd3enVybnh1NXQ2ZQ%3D%3D&utm_source=qr" target="_blank"><i class="mdi mdi-instagram"></i></a>
           <a href="https://www.linkedin.com/company/miraitechkz/" target="_blank"><i class="mdi mdi-linkedin"></i></a>
@@ -742,7 +718,7 @@ document.addEventListener('DOMContentLoaded', updateMetricsView);
       </div>
       <div class="footer-right">
         <div class="contact-info" style="text-align: right; margin-left: auto;">
-          <h3>Contacts</h3>
+          <h3 data-key="footer-contacts"></h3>
           <p>mirai.tech.kz@gmail.com</p>
           <p>пр. Кабанбай батыра 53, Астана</p>
         </div>
@@ -932,3 +908,4 @@ document.addEventListener('DOMContentLoaded', updateMetricsView);
   });
 </script>
 </html>
+<script src="lang.js"></script>
