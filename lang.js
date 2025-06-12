@@ -86,7 +86,7 @@ const translations = {
       // News Section
       "news-title": "Новости",
       "news-1-title": "Digital Business",
-      "news-1-desc": "Инженеры из Назарбаев Университета основали стартап Mirai Tech после обучения в Японии.",
+      "news-1-desc": "Инженеры Гульнур Калимулдина и Азамат Ешмухаметов — ученые из Назарбаев Университета. Встретились в Японии, где получали PhD, а вернувшись на родину основали стартап Mirai Tech..",
       "news-1-link": "Подробнее →",
       "news-2-title": "The Steppe",
       "news-2-desc": "MIRAI TECH — стартап, меняющий подход к реабилитации в медицине и спорте.",
@@ -394,15 +394,22 @@ const translations = {
     }
   };
   
-  function setLanguage(lang) {
-    localStorage.setItem("lang", lang);
-    document.querySelectorAll('[data-key]').forEach(el => {
-      const key = el.getAttribute('data-key');
-      if (translations[lang][key]) {
-        el.innerHTML = translations[lang][key];
-      }
-    });
-  }
+function setLanguage(lang) {
+  localStorage.setItem("lang", lang);
+  document.querySelectorAll('[data-key]').forEach(el => {
+    const key = el.getAttribute('data-key');
+    if (translations[lang][key]) {
+      el.innerHTML = translations[lang][key];
+    }
+  });
+  // Change problem-slide images according to language
+  document.querySelectorAll('.problem-slide').forEach(img => {
+    const newSrc = img.getAttribute(`data-src-${lang}`);
+    if (newSrc) {
+      img.src = newSrc;
+    }
+  });
+}
   
   document.addEventListener("DOMContentLoaded", () => {
     const lang = localStorage.getItem("lang") || "ru";
